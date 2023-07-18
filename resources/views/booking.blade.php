@@ -21,23 +21,29 @@
 <body class="booking_body">
   
     <!--  Header -->
-     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-5 navbar-bg">
-      
-      <div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <div class="main-logo">
-             <a href="{{route('home')}}" class="align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Movie-Club-Logo.png')}}" alt="BSW Movie Club"></a> 
-         </div>
-      </div>
-      <div class="col-md-3 text-end">
-        <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button> -->
+     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 mb-1 navbar-bg">
+      <div class="container">
+        <div class="row">
+           <div class="nav col-md-10 col-9 col-md-auto mb-2 mb-md-0">
+              <div class="main-logo">
+                   <a href="{{route('home')}}" class="align-items-center mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Movie-Club-Logo.png')}}" alt="BSW Movie Club"></a> 
+               </div>
+            </div>
+            <div class="col-md-2 col-3 text-end">
+              <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button>
+              <button type="button" class="btn btn-primary">Sign-up</button> -->
+              <div class="sub-logo">
+              <a href="{{route('home')}}" class="align-items-center mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Socials-Logo.png')}}" alt="BSW Socials"></a> 
+              </div>
+            </div>
+        </div>
       </div>
     </header>
 
     <!-- Main Page Content -->
-    <div class="container mt-5">
+    <div class="container mt-0">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-8 ">
                  <h1 class="display-3 lead">Choose The Seat Here</h1>
                  <div class="row ">
                     <div class="col-md-12 movie-seating text-center">
@@ -55,7 +61,7 @@
 
                         <div class="movcontainer">
 
-                            <div class="screen"></div>
+                            <div class="screen"> SCREEN</div>
                             <div class="loader" style="display: none;">
                                 <div class="loader__filmstrip">
                                 </div>
