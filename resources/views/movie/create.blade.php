@@ -63,6 +63,14 @@
                 <input type="text" class="form-control" id="cast" name="cast" required>
             </div>
             <div class="form-group">
+                  <label for="city">City</label>
+                  <select class="select2" name="city[]" multiple="multiple" data-placeholder="Select a City" style="width: 100%;">
+                    <option>Mumbai</option>
+                    <option>Bengaluru</option>
+                    <option>Bhubaneswar</option>
+                  </select>
+            </div>
+            <div class="form-group">
                 <label for="status">Status:</label>
                 <select class="form-control" id="status" name="status">
                     <option value="1">Active</option>

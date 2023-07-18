@@ -61,34 +61,53 @@ class FrontendController extends Controller
         $name = $request->name;
         $email = $request->email;
 
-        $book = new Booking();
-        $book->m_id = $m_id;
-        $book->s_id = $s_id;
-        $book->name = $name;
-        $book->email = $email;
-        $book->save();
-
-        $lastInsertedId = $book->id;
-        if($lastInsertedId)
+        $count = Booking::where('email',$email)->get()->count();
+        // echo '<pre>';print_r($count);exit();
+        if($count >= 1)
         {
-            Seating::where(['s_id'=> $s_id,'m_id'=>$m_id])->update([
-                'status' => 1
-            ]);
+            return response()->json(['status'=>false,'message' => 'You have already booked with this email id']);
+        }else{
+            $pos = strpos($email, '@');
 
-            $m_data = Movie::where('id',$m_id)->get();
-            $movie_data = json_decode($m_data);
-            // echo '<pre>';print_r($movie_data);exit();
-            $details = [
-                'title' => 'Booked Successfully',
-                'm_name' => $movie_data[0]->m_name,
-                'date' => $movie_data[0]->date,
-                'time' => $movie_data[0]->time,
-                'venue'=> $movie_data[0]->venue,
-                'Seat_Id' => $s_id
-            ];
-           
-            \Mail::to($email)->send(new \App\Mail\BookedMail($details));
-            return true;
+            // Extract the domain part after the "@" symbol
+            $domain = substr($email, $pos + 1);
+
+            // Check if the domain is "gmail.com"
+            if(strcasecmp($domain, 'brand-scapes.com') === 0)
+            {
+                $book = new Booking();
+                $book->m_id = $m_id;
+                $book->s_id = $s_id;
+                $book->name = $name;
+                $book->email = $email;
+                $book->save();
+
+                $lastInsertedId = $book->id;
+                if($lastInsertedId)
+                {
+                    Seating::where(['s_id'=> $s_id,'m_id'=>$m_id])->update([
+                        'status' => 1
+                    ]);
+
+                    $m_data = Movie::where('id',$m_id)->get();
+                    $movie_data = json_decode($m_data);
+                    // echo '<pre>';print_r($movie_data);exit();
+                    $details = [
+                        'title' => 'Booked Successfully',
+                        'm_name' => $movie_data[0]->m_name,
+                        'date' => $movie_data[0]->date,
+                        'time' => $movie_data[0]->time,
+                        'venue'=> $movie_data[0]->venue,
+                        'Seat_Id' => $s_id
+                    ];
+                   
+                    \Mail::to($email)->send(new \App\Mail\BookedMail($details));
+                    return response()->json(['status'=>true,'message' => 'Success message']);
+                }
+            }else{
+                return response()->json(['status'=>false,'message' => 'Please check the Email ID']);  
+            }
+
         }
     }
 }

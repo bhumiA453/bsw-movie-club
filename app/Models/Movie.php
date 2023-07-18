@@ -23,7 +23,7 @@ class Movie extends Model
      */
     protected $primaryKey = 'id';
 
-    protected $fillable = ['m_name', 'm_image', 'date', 'time', 'venue','genres','cast','is_active'];
+    protected $fillable = ['m_name', 'm_image', 'date', 'time', 'venue','genres','cast','city','is_active'];
 
     public function getDetails()
     {

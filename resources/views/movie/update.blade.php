@@ -64,6 +64,29 @@
                 <input type="text" class="form-control" id="cast" name="cast" value="{{ $item->cast }}" required>
             </div>
             <div class="form-group">
+                  <label for="city">City</label>
+                  <select class="select2" name="city[]" multiple="multiple" data-placeholder="Select a City" style="width: 100%;">
+                    <?php
+                      // Assuming you have fetched the selected values and stored them in the '$selectedValues' array
+                      $selectedValues = explode(",",  $item->city ); // Replace this with your actual selected values
+
+                      // Assuming you have an array of all available options
+                      $allOptions = array(
+                        '1' => 'Mumbai',
+                        '2' => 'Bengaluru',
+                        '3' => 'Bhubaneswar',
+                        // Add more options here as needed
+                      );
+
+                      // Loop through all options and generate the <option> elements
+                      foreach ($allOptions as $label) {
+                        $selected = in_array($label, $selectedValues) ? 'selected' : ''; // Check if the option is selected
+                        echo "<option $selected>$label</option>";
+                      }
+                      ?>
+                  </select>
+            </div>
+            <div class="form-group">
                 <label for="status">Status:</label>
                 <select class="form-control" id="status" name="status">
                     <option value="1" {{ $item->is_active == 1 ? 'selected' : '' }}>Active</option>

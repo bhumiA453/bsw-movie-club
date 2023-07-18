@@ -46,6 +46,8 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Venue</th>
+                    <th>Genres</th>
+                    <th>City</th>
                     <th>Active</th>
                     <th>Action</th>
                   </tr>
@@ -59,6 +61,8 @@
                               <td>{{ $detail->date }}</td>
                               <td>{{ $detail->time }}</td>
                               <td>{{ $detail->venue }}</td>
+                              <td>{{ $detail->genres }}</td>
+                              <td>{{ $detail->city }}</td>
                               <td>
                                 @if ($detail->is_active == 1)
                                   Active
@@ -80,7 +84,7 @@
                       @endforeach
                   @else
                       <tr>
-                          <td colspan="7">No data available.</td>
+                          <td colspan="9">No data available.</td>
                       </tr>
                   @endif
                   </tbody>
@@ -91,6 +95,8 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Venue</th>
+                    <th>Genres</th>
+                    <th>City</th>
                     <th>Active</th>
                     <th>Action</th>
                   </tr>

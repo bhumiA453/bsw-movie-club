@@ -23,6 +23,7 @@ class MovieController extends Controller
 
     public function save_movie(Request $request)
     {
+        // echo '<pre>';print_r($_POST);exit();
         $validatedData = $request->validate([
             'name' => 'required',
             'image' => 'required|image',
@@ -31,6 +32,7 @@ class MovieController extends Controller
             'description' => 'required',
             'genres' => 'required',
             'cast' => 'required',
+            'city' => 'required',
             'status' => 'required|in:0,1',
         ]);
         try {
@@ -44,6 +46,7 @@ class MovieController extends Controller
             $movie->venue = $validatedData['description'];
             $movie->genres = $validatedData['genres'];
             $movie->cast = $validatedData['cast'];
+            $movie->city = implode(",", $validatedData['city']);
             $movie->is_active = $validatedData['status'];
             $movie->save();
 
@@ -70,6 +73,7 @@ class MovieController extends Controller
             'description' => 'required',
             'genres' => 'required',
             'cast' => 'required',
+            'city' => 'required',
             'status' => 'required|in:0,1',
         ]);
        
@@ -89,6 +93,7 @@ class MovieController extends Controller
             $movie->venue = $validatedData['description'];
             $movie->genres = $validatedData['genres'];
             $movie->cast = $validatedData['cast'];
+            $movie->city = implode(",", $validatedData['city']);
             $movie->is_active = $validatedData['status'];
             $movie->save();
 

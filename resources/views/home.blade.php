@@ -144,7 +144,7 @@
                 {
                   window.location.href = '/booking';
                 }else{
-                  swal.fire('Error', "Seats not available", 'error');
+                  swal.fire('Housefull', "Seats not available", 'error');
                 }
               }
               // You can perform additional actions here based on the response

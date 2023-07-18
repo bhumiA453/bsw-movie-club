@@ -187,15 +187,22 @@
                     method: 'POST',
                     data: formData,
                     success: function (response) {
-                      $(".loader").hide();
-                      $('#regbooking_modal')[0].reset();
-                        // Handle success response
-                      swal.fire('Success', "Booked Successfully", 'success');
-                      $('#bookingModal').modal('toggle');
-                      var seatId = $('#s_id').val();
-                      $('#' + seatId).removeClass('occupied');
-                      $('#' + seatId).addClass('selected').prop('disabled', true);
-                      // console.log(response);return false;
+                        // console.log(response);return false;
+                      if(response.status == true)
+                      {
+                        $(".loader").hide();
+                        $('#regbooking_modal')[0].reset();
+                            // Handle success response
+                        swal.fire('Success', "Booked Successfully", 'success');
+                        $('#bookingModal').modal('toggle');
+                        var seatId = $('#s_id').val();
+                        $('#' + seatId).removeClass('occupied');
+                        $('#' + seatId).addClass('selected').prop('disabled', true);
+                      } else{
+                        $('#regbooking_modal')[0].reset();
+                        swal.fire('Error', response.message, 'error');
+                        $('#bookingModal').modal('toggle');
+                      } 
                     },
                     error: function () {
                         // Handle error
