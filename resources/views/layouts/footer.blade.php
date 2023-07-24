@@ -49,9 +49,30 @@
 $(function () {
   bsCustomFileInput.init();
   //Initialize Select2 Elements
-  $('.select2').select2({
+  $('.movie').select2({
+    multiple: true
+  });
+  $('.movie_update').select2({
     multiple: true
   });
 });
+
+$(document).ready(function () {
+                // Function to add the active class based on the current URL
+                function setActiveMenu() {
+                    var currentUrl = window.location.href;
+
+                    $("#sidebar-menu li a").removeClass("active");
+                    $("#sidebar-menu li a").each(function () {
+                        if (currentUrl.indexOf($(this).attr("href")) !== -1) {
+                            $(this).closest("li a").addClass("active");
+                        }
+                    });
+                }
+
+                // Initially set the active class
+                setActiveMenu();
+            });
+
 </script>
 @yield('script')

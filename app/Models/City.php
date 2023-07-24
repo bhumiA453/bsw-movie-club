@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seating extends Model
+class City extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Seating extends Model
      *
      * @var string
      */
-    protected $table = 'seating';
+    protected $table = 'city';
 
      /**
      * The primary key associated with the table.
@@ -23,11 +23,18 @@ class Seating extends Model
      */
     protected $primaryKey = 'id';
 
-    protected $fillable = ['s_id', 'm_id','city', 'status'];
+    protected $fillable = ['name', 'c_id'];
 
     public function getDetails()
     {
          return $data = $this->get();
         // echo '<pre>';print_r($data);exit();
+    }
+
+    public function getEncodeID($name)
+    {
+        $c_id = City::select('c_id')->where('name',$name)->get();
+        $c_id = $c_id->toArray();
+        return $c_id[0]['c_id'];
     }
 }

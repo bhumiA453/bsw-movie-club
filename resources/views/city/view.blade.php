@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Booking</h1>
+            <h1 class="m-0">City</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active">Booking</li>
+              <li class="breadcrumb-item active">City</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -29,24 +29,21 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <!-- <div class="mb-3">
-                    <a href="{{ route('create-seats') }}" class="btn btn-primary">Add Seats</a>
-                </div> -->
+                <div class="mb-3">
+                    <a href="{{ route('create-city') }}" class="btn btn-primary">Add City</a>
+                </div>
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible">
                       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         {{ session('success') }}
                     </div>
                 @endif
-                <table id="booking_data" class="table table-bordered table-striped">
+                <table id="city_data" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Movie ID</th>
-                    <th>Seat ID</th>
-                    <th>City</th>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>City ID</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -54,28 +51,22 @@
                       @foreach($details as $detail)
                           <tr>
                               <td>{{ $detail->id }}</td>
-                              <td>{{ $detail->m_id }}</td>
-                              <td>{{ $detail->s_id }}</td>
-                              <td>{{ $detail->city }}</td>
                               <td>{{ $detail->name }}</td>
-                              <td>{{ $detail->email }}</td>
+                              <td>{{ $detail->c_id }}</td>
                               <!-- Add more columns as needed -->
                           </tr>
                       @endforeach
                   @else
                       <tr>
-                          <td colspan="6">No data available.</td>
+                          <td colspan="3">No data available.</td>
                       </tr>
                   @endif
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>ID</th>
-                    <th>Movie ID</th>
-                    <th>Seat ID</th>
-                    <th>City</th>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>City ID</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -99,10 +90,10 @@
 @section('script')
   <script>
   $(function () {
-    $("#booking_data").DataTable({
+    $("#city_data").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,"paging": true,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#booking_data_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#city_data_wrapper .col-md-6:eq(0)');
   });
 </script>
 @endsection

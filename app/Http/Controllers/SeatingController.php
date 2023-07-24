@@ -35,6 +35,7 @@ class SeatingController extends Controller
 
     public function save_seats(Request $request)
     {
+        // dd($_POST);
         $validatedData = $request->validate([
             'm_id' => 'required',
             'seats' => 'required',
@@ -42,15 +43,24 @@ class SeatingController extends Controller
         try {
             $no_seats = $request->seats;
             
-            for($i = 1;$i<=$no_seats;$i++)
+            $city_array = Movie::select('city')->where('id',$request->m_id)->get();
+            $city_array = $city_array->toArray();
+            $city = explode(',', $city_array[0]['city']);
+            // echo '<pre>';print_r($city);exit();
+
+            foreach($city as $value)
             {
-                $seating = new Seating();
-                $seating->s_id = $i;
-                $seating->m_id = $request->m_id;
-                $seating->status = 0;
-                $seating->save();
+                for($i = 1;$i<=$no_seats;$i++)
+                {
+                    $seating = new Seating();
+                    $seating->s_id = $i;
+                    $seating->m_id = $request->m_id;
+                    $seating->city = $value;
+                    $seating->status = 0;
+                    $seating->save();
+                }
             }
-            
+                    
 
             return redirect('/seating')->with('success', 'Seats data saved successfully!');
         }catch (\Exception $e) {

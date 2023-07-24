@@ -23,7 +23,7 @@ class Booking extends Model
      */
     protected $primaryKey = 'id';
 
-    protected $fillable = ['s_id', 'm_id', 'name','email'];
+    protected $fillable = ['s_id', 'm_id','city', 'name','email'];
 
     public function getDetails()
     {

@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{route('movie')}}">Movie</a></li>
+              <li class="breadcrumb-item"><a href="{{route('get-movie')}}">Movie</a></li>
               <li class="breadcrumb-item active">Update Movie</li>
             </ol>
           </div><!-- /.col -->
@@ -65,7 +65,7 @@
             </div>
             <div class="form-group">
                   <label for="city">City</label>
-                  <select class="select2" name="city[]" multiple="multiple" data-placeholder="Select a City" style="width: 100%;">
+                  <select class="select2 movie_update" name="city[]" multiple="multiple" data-placeholder="Select a City" style="width: 100%;">
                     <?php
                       // Assuming you have fetched the selected values and stored them in the '$selectedValues' array
                       $selectedValues = explode(",",  $item->city ); // Replace this with your actual selected values

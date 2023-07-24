@@ -4,14 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\City;
+use App\Models\Seating;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Crypt;
 
 class MovieController extends Controller
 {
     public function get_all_movie()
     {
+        $today = Carbon::today();
         $movie = new Movie();
+        $m_ids = $movie->select('id')->whereDate('date', '<=', $today->toDateString())->get();
+        $m_ids = $m_ids->toArray();
+        
+        if(isset($m_ids) || count($m_ids) > 0)
+        {
+            Movie::whereIn('id',$m_ids)->update(['is_active' => 0]);
+            Seating::whereIn('m_id',$m_ids)->delete();
+        }
+        
         $details = $movie->getDetails();
+        
         return view('movie.view', ['details' => $details]);
         // echo '<pre>';print_r($details);exit();
     }
@@ -37,7 +52,13 @@ class MovieController extends Controller
         ]);
         try {
             $imagePath = $request->file('image')->store('images', 'public');
-
+            
+            foreach($validatedData['city'] as $city)
+            {
+                $encrypt_city = City::getEncodeID($city);
+                $preview_url[] = url('/').'?id='.$encrypt_city; 
+            }
+            // exit($preview_url);
             $movie = new Movie();
             $movie->m_name = $validatedData['name'];
             $movie->m_image = $imagePath;
@@ -47,10 +68,11 @@ class MovieController extends Controller
             $movie->genres = $validatedData['genres'];
             $movie->cast = $validatedData['cast'];
             $movie->city = implode(",", $validatedData['city']);
+            $movie->preview_url = implode(",", $preview_url);
             $movie->is_active = $validatedData['status'];
             $movie->save();
 
-            return redirect('/movie')->with('success', 'Movie data saved successfully!');
+            return redirect('/get_movie')->with('success', 'Movie data saved successfully!');
         }catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to save movie data. Please try again.']);
         }    
@@ -88,16 +110,23 @@ class MovieController extends Controller
                 $imagePath = $request->file('image')->store('images', 'public');
                 $movie->m_image = $imagePath;
             }
+
+            foreach($validatedData['city'] as $city)
+            {
+                $encrypt_city = City::getEncodeID($city);
+                $preview_url[] = url('/').'?id='.$encrypt_city;  
+            }
             $movie->date = $validatedData['date'];
             $movie->time = $validatedData['time'];
             $movie->venue = $validatedData['description'];
             $movie->genres = $validatedData['genres'];
             $movie->cast = $validatedData['cast'];
             $movie->city = implode(",", $validatedData['city']);
+            $movie->preview_url = implode(",", $preview_url);
             $movie->is_active = $validatedData['status'];
             $movie->save();
 
-            return redirect('/movie')->with('success', 'Movie data updated successfully!');
+            return redirect('/get_movie')->with('success', 'Movie data updated successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Failed to update movie data. Please try again.']);
         }

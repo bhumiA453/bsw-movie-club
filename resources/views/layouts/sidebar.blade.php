@@ -19,7 +19,7 @@
       </div> -->
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      <!-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -28,15 +28,15 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" id="sidebar-menu" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="{{route('movie')}}" class="nav-link active">
+          <li class="nav-item menu-item active">
+            <a href="{{route('get-movie')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Movie
@@ -44,7 +44,16 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item menu-item">
+            <a href="{{route('city')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                City
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item menu-item">
             <a href="{{route('seating')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -52,7 +61,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item menu-item">
             <a href="{{route('get-booking-data')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>

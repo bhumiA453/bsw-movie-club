@@ -43,6 +43,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Movie ID</th>
+                    <th>City</th>
                     <th>Status</th>
                   </tr>
                   </thead>
@@ -52,6 +53,7 @@
                           <tr>
                               <td>{{ $detail->id }}</td>
                               <td>{{ $detail->m_id }}</td>
+                              <td>{{ $detail->city }}</td>
                               <td>
                                 @if ($detail->status == 1)
                                   Booked
@@ -64,7 +66,7 @@
                       @endforeach
                   @else
                       <tr>
-                          <td colspan="3">No data available.</td>
+                          <td colspan="4">No data available.</td>
                       </tr>
                   @endif
                   </tbody>
@@ -72,6 +74,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Movie ID</th>
+                    <th>City</th>
                     <th>Status</th>
                   </tr>
                   </tfoot>

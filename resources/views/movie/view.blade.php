@@ -41,13 +41,14 @@
                 <table id="movie_data" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Venue</th>
                     <th>Genres</th>
                     <th>City</th>
+                    <th>Preview Url</th>
                     <th>Active</th>
                     <th>Action</th>
                   </tr>
@@ -55,6 +56,9 @@
                   <tbody>
                   @if ($details->count() > 0)
                       @foreach($details as $detail)
+                        <?php 
+                        $city = explode(',', $detail->city);
+                        $preview = explode(',',$detail->preview_url); ?>
                           <tr>
                               <td>{{ $detail->id }}</td>
                               <td>{{ $detail->m_name }}</td>
@@ -62,7 +66,21 @@
                               <td>{{ $detail->time }}</td>
                               <td>{{ $detail->venue }}</td>
                               <td>{{ $detail->genres }}</td>
-                              <td>{{ $detail->city }}</td>
+                              <td>
+                                @foreach($city as $val)
+                                <ul>
+                                  <li>{{$val}}</li>
+                                </ul>
+                                @endforeach
+                              </td>
+                              <td>
+                                @foreach($preview as $value)
+                                <ul>
+                                  <li><a href="{{$value}}" target="_blank" >{{$value}}</a></li>
+                                </ul>
+                                @endforeach
+                                
+                              </td>
                               <td>
                                 @if ($detail->is_active == 1)
                                   Active
@@ -84,19 +102,20 @@
                       @endforeach
                   @else
                       <tr>
-                          <td colspan="9">No data available.</td>
+                          <td colspan="10">No data available.</td>
                       </tr>
                   @endif
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Venue</th>
                     <th>Genres</th>
                     <th>City</th>
+                    <th>Preview Url</th>
                     <th>Active</th>
                     <th>Action</th>
                   </tr>

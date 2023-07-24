@@ -5,7 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SeatingController;
-use App\Http\Controllers\BookingController; 
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CityController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,12 @@ Route::get('/admin/login', function () {
 });
 
 Route::get('/', [FrontendController::class, 'get_movie'])->name('home');
+// Route::get('/{id?}', [FrontendController::class, 'get_movie'])->name('home');
 Route::post('/check-seats', [FrontendController::class, 'check_seats'])->name('check-seats');
-Route::get('/booking', [FrontendController::class, 'get_seats'])->name('booking');
+Route::any('/booking', [FrontendController::class, 'get_seats'])->name('booking');
 Route::post('/save-seat-data', [FrontendController::class, 'save_booking'])->name('save-seat-data');
 
-Route::get('send-mail', function () {
+/*Route::get('send-mail', function () {
    
     $details = [
         'title' => 'Mail from ItSolutionStuff.com',
@@ -41,7 +43,7 @@ Route::get('send-mail', function () {
     \Mail::to('shahbhumik5693@gmail.com')->send(new \App\Mail\MyTestMail($details));
    
     dd("Email is Sent.");
-});
+});*/
 
 Auth::routes();
 
@@ -59,8 +61,13 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+    /*City menu*/
+    Route::get('/city', [CityController::class, 'get_all_city'])->name('city');
+    Route::get('/create_city', [CityController::class, 'add_city'])->name('create-city');
+    Route::post('/save_city', [CityController::class, 'save_city'])->name('save-city');
+
     /*Movie menu*/
-    Route::get('/movie', [MovieController::class, 'get_all_movie'])->name('movie');
+    Route::get('/get_movie', [MovieController::class, 'get_all_movie'])->name('get-movie');
     Route::get('/create', [MovieController::class, 'add_movie'])->name('create');
     Route::post('/save_movie', [MovieController::class, 'save_movie'])->name('save-movie');
     Route::get('/edit/{id}', [MovieController::class, 'edit_movie'])->name('edit-movie');

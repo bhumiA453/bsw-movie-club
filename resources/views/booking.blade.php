@@ -26,14 +26,14 @@
         <div class="row">
            <div class="nav col-md-10 col-9 col-md-auto mb-2 mb-md-0">
               <div class="main-logo">
-                   <a href="{{route('home')}}" class="align-items-center mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Movie-Club-Logo.png')}}" alt="BSW Movie Club"></a> 
+                   <a href="{{route('home', ['id' => session('city_id')])}}" class="align-items-center mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Movie-Club-Logo.png')}}" alt="BSW Movie Club"></a> 
                </div>
             </div>
             <div class="col-md-2 col-3 text-end">
               <!-- <button type="button" class="btn btn-outline-primary me-2">Login</button>
               <button type="button" class="btn btn-primary">Sign-up</button> -->
               <div class="sub-logo">
-              <a href="{{route('home')}}" class="align-items-center mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Socials-Logo.png')}}" alt="BSW Socials"></a> 
+              <a href="{{route('home', ['id' => session('city_id')])}}" class="align-items-center mb-2 mb-md-0 text-dark text-decoration-none"><img src="{{ asset('dist/img/BSW-Socials-Logo.png')}}" alt="BSW Socials"></a> 
               </div>
             </div>
         </div>

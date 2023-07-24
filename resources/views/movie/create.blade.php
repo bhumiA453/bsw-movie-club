@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{route('movie')}}">Movie</a></li>
+              <li class="breadcrumb-item"><a href="{{route('get-movie')}}">Movie</a></li>
               <li class="breadcrumb-item active">Create Movie</li>
             </ol>
           </div><!-- /.col -->
@@ -64,7 +64,7 @@
             </div>
             <div class="form-group">
                   <label for="city">City</label>
-                  <select class="select2" name="city[]" multiple="multiple" data-placeholder="Select a City" style="width: 100%;">
+                  <select class="select2 movie" name="city[]" multiple="multiple" data-placeholder="Select a City" style="width: 100%;">
                     <option>Mumbai</option>
                     <option>Bengaluru</option>
                     <option>Bhubaneswar</option>
