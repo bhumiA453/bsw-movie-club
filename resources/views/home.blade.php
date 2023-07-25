@@ -54,7 +54,15 @@
       </div>
     </header>
 
-    
+    <div class="loader-wrapper">
+      <div class="loader"> 
+      <div class="loader__filmstrip">
+      </div> 
+      <p class="loader__text">
+                  loading
+      </p>
+      </div>
+    </div>
 
     <!-- Main Page Content -->
     <div class="container mt-0">
@@ -124,7 +132,11 @@
     <script src="{{ asset('dist/js/mainjs.js')}}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
+      $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+      });
       $(document).ready(function () {
+
         /*$('#bookingModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');
@@ -133,7 +145,7 @@
 
         $('.book_now').click(function(event) {
           event.preventDefault(); // Prevent the form from submitting normally
-
+          $(".loader-wrapper").fadeIn("slow");
           // Get the form data
           var formData = {
             m_id: $(this).prev('.m_id').val(),
@@ -145,6 +157,7 @@
             url: '/check-seats',
             data: formData,
             success: function(response) {
+              $(".loader-wrapper").fadeOut("slow");
               // Handle the response from the server
               // console.log(response);
               // return false;

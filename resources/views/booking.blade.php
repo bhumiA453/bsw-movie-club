@@ -40,6 +40,8 @@
       </div>
     </header>
 
+    
+
     <!-- Main Page Content -->
     <div class="container mt-0">
         <div class="row justify-content-center">
@@ -62,13 +64,13 @@
                         <div class="movcontainer">
 
                             <div class="screen"> SCREEN</div>
-                            <div class="loader" style="display: none;">
+                            <!-- <div class="loader" style="display: none;">
                                 <div class="loader__filmstrip">
                                 </div>
                                 <p class="loader__text">
                                     loading
                                 </p>
-                            </div>
+                            </div> -->
                             <div id="seatingArrangement">    
                                 <?php
                                 // Calculate the number of rows and columns
@@ -111,6 +113,15 @@
   <!-- Modal -->
   <div class="modal" id="bookingModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
+        <div class="loader-wrapper">
+          <div class="loader"> 
+          <div class="loader__filmstrip">
+          </div> 
+          <p class="loader__text">
+                      loading
+          </p>
+          </div>
+        </div>
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Register</h5>
@@ -151,6 +162,9 @@
     <script src="{{ asset('dist/js/mainjs.js')}}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
+      $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+      });
       $(document).ready(function () {
         $('#bookingModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -183,7 +197,8 @@
                 }
             },
             submitHandler: function (form) {
-              $(".loader").show();
+              // $(".loader").show();
+              $(".loader-wrapper").fadeIn();
                 // Serialize form data
                 var formData = $(form).serialize();
                 // console.log(formData);return false;
@@ -196,7 +211,8 @@
                         // console.log(response);return false;
                       if(response.status == true)
                       {
-                        $(".loader").hide();
+                        // $(".loader").hide();
+                        $(".loader-wrapper").fadeOut("slow");
                         $('#regbooking_modal')[0].reset();
                             // Handle success response
                         swal.fire('Success', "Booked Successfully", 'success');
@@ -205,6 +221,7 @@
                         $('#' + seatId).removeClass('occupied');
                         $('#' + seatId).addClass('selected').prop('disabled', true);
                       } else{
+                        $(".loader-wrapper").fadeOut("slow");
                         $('#regbooking_modal')[0].reset();
                         swal.fire('Error', response.message, 'error');
                         $('#bookingModal').modal('toggle');
