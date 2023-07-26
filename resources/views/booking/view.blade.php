@@ -42,7 +42,7 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Movie ID</th>
+                    <th>Movie Name</th>
                     <th>Seat ID</th>
                     <th>City</th>
                     <th>Name</th>
@@ -54,7 +54,7 @@
                       @foreach($details as $detail)
                           <tr>
                               <td>{{ $detail->id }}</td>
-                              <td>{{ $detail->m_id }}</td>
+                              <td>{{ $detail->m_name }}</td>
                               <td>{{ $detail->s_id }}</td>
                               <td>{{ $detail->city }}</td>
                               <td>{{ $detail->name }}</td>
@@ -71,7 +71,7 @@
                   <tfoot>
                   <tr>
                     <th>ID</th>
-                    <th>Movie ID</th>
+                    <th>Movie Name</th>
                     <th>Seat ID</th>
                     <th>City</th>
                     <th>Name</th>

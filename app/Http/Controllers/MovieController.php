@@ -45,6 +45,7 @@ class MovieController extends Controller
             'date' => 'required|date',
             'time' => 'required',
             'description' => 'required',
+            'url' => 'required',
             'genres' => 'required',
             'cast' => 'required',
             'city' => 'required',
@@ -58,6 +59,17 @@ class MovieController extends Controller
                 $encrypt_city = City::getEncodeID($city);
                 $preview_url[] = url('/').'?id='.$encrypt_city; 
             }
+
+            $pattern = '/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?.*v=|embed\/|v\/)|youtu\.be\/)([^&?\/ ]{11})/';
+            preg_match($pattern, $validatedData['url'], $matches);
+
+            if (isset($matches[1])) {
+                $video_id = $matches[1];
+                // echo '<pre>';print_r($matches[1]);exit();
+            } else {
+                return redirect()->back()->withInput()->withErrors(['error' => "URL format doesn't match a YouTube video."]); 
+            }
+
             // exit($preview_url);
             $movie = new Movie();
             $movie->m_name = $validatedData['name'];
@@ -65,6 +77,8 @@ class MovieController extends Controller
             $movie->date = $validatedData['date'];
             $movie->time = $validatedData['time'];
             $movie->venue = $validatedData['description'];
+            $movie->trailer_url = $validatedData['url'];
+            $movie->trailer_id = $video_id;
             $movie->genres = $validatedData['genres'];
             $movie->cast = $validatedData['cast'];
             $movie->city = implode(",", $validatedData['city']);
@@ -93,6 +107,7 @@ class MovieController extends Controller
             'date' => 'required|date',
             'time' => 'required',
             'description' => 'required',
+            'url' => 'required',
             'genres' => 'required',
             'cast' => 'required',
             'city' => 'required',
@@ -111,6 +126,16 @@ class MovieController extends Controller
                 $movie->m_image = $imagePath;
             }
 
+            $pattern = '/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?.*v=|embed\/|v\/)|youtu\.be\/)([^&?\/ ]{11})/';
+            preg_match($pattern, $validatedData['url'], $matches);
+
+            if (isset($matches[1])) {
+                $video_id = $matches[1];
+                // echo '<pre>';print_r($matches[1]);exit();
+            } else {
+                return redirect()->back()->withInput()->withErrors(['error' => "URL format doesn't match a YouTube video."]); 
+            }
+
             foreach($validatedData['city'] as $city)
             {
                 $encrypt_city = City::getEncodeID($city);
@@ -119,6 +144,8 @@ class MovieController extends Controller
             $movie->date = $validatedData['date'];
             $movie->time = $validatedData['time'];
             $movie->venue = $validatedData['description'];
+            $movie->trailer_url = $validatedData['url'];
+            $movie->trailer_id = $video_id;
             $movie->genres = $validatedData['genres'];
             $movie->cast = $validatedData['cast'];
             $movie->city = implode(",", $validatedData['city']);

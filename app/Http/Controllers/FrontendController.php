@@ -81,7 +81,7 @@ class FrontendController extends Controller
         $name = $request->name;
         $email = $request->email;
         $city = Session::get('city_id');
-        $count = Booking::where('email',$email)->get()->count();
+        $count = Booking::where(['email'=> $email,'m_id'=>$m_id])->get()->count();
         // echo '<pre>';print_r($count);exit();
         if($count >= 1)
         {
@@ -114,7 +114,7 @@ class FrontendController extends Controller
                     $movie_data = json_decode($m_data);
                     // echo '<pre>';print_r($movie_data);exit();
                     $details = [
-                        'title' => 'Booked Successfully',
+                        'title' => 'Your booking is confirmed!',
                         'm_name' => $movie_data[0]->m_name,
                         'u_name' => $name,
                         'email' => $email,

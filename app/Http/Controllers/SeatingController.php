@@ -7,14 +7,20 @@ use App\Models\Seating;
 use App\Models\Movie;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class SeatingController extends Controller
 {
     public function get_all_seating()
     {
-        $seating = new Seating();
-        $details = $seating->getDetails();
+        $details = DB::table('seating as s')
+        ->join('movie as m', 's.m_id', '=', 'm.id')
+        ->select('s.*', 'm.m_name')
+        ->get();
+        
+        /*$seating = new Seating();
+        $details = $seating->getDetails();*/
         return view('seating.view', ['details' => $details]);
         // echo '<pre>';print_r($details);exit();
     }

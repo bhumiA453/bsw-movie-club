@@ -4,7 +4,6 @@
     <title>BSW Movie Club</title>
 </head>
 <body>
-    <h1>{{ $details['title'] }}</h1>
     <h4>Hi Admin,</h4>
     <p>PFB user booked details:</p>
     <p>User Name: {{$details['u_name']}}</p>

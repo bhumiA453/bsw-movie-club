@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'BSW Movie Club') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('dist/css/admin-style.css') }}" rel="stylesheet">

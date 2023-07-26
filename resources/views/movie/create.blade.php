@@ -55,6 +55,10 @@
                 <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
             </div>
             <div class="form-group">
+                <label for="url">Trailer Url:</label>
+                <input type="url" class="form-control" id="url" name="url" required>
+            </div>
+            <div class="form-group">
                 <label for="genres">Genres:</label>
                 <input type="text" class="form-control" id="genres" name="genres" required>
             </div>

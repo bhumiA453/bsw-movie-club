@@ -56,6 +56,10 @@
                 <textarea class="form-control" id="description" name="description" rows="3" required>{{ $item->venue }}</textarea>
             </div>
             <div class="form-group">
+                <label for="genres">Trailer Url:</label>
+                <input type="url" class="form-control" id="url" name="url" value="{{ $item->trailer_url }}" required>
+            </div>
+            <div class="form-group">
                 <label for="genres">Genres:</label>
                 <input type="text" class="form-control" id="genres" name="genres" value="{{ $item->genres }}" required>
             </div>
