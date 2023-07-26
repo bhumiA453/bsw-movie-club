@@ -1,17 +1,226 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>BSW Movie Club</title>
-</head>
-<body>
-    <h1>{{ $details['title'] }}</h1>
-    <h4>Hello {{$details['u_name']}}</h4>
-    <p>Movie Name: {{ $details['m_name'] }}</p>
-    <p>Movie Date: {{date('d M Y',strtotime($details['date']))}}</p>
-    <p>Movie Time: {{date('h:iA',strtotime($details['time']))}}</p>
-    <p>Movie Venue: {{ $details['venue'] }}</p>
-    <p>Seat Id:{{$details['Seat_Id']}}</p>
-   
-    <p>Thank you</p>
-</body>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>BSW Movie Club</title>
+      <style type="text/css">
+         v:* { behavior: url(#default#VML); display: inline-block; }
+         body,#bodyTable,#bodyCell{height:100%;margin:0px;padding:0px;width:100%}body{background-color:#fefefe;color:#333333;font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:1.5em;font-weight:400 !important;height:100%;margin:0 !important;padding:0 !important;width:100%}body,table,td{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table,td{color:#333333;font-family:Helvetica, Arial,
+         sans-serif;border-collapse:collapse;border-spacing:0;border:0;font-size:18px;mso-table-lspace:0pt;mso-table-rspace:0pt}img{-ms-interpolation-mode:bicubic;border:0;height:auto;line-height:100%;max-width:100%;outline:none;text-decoration:none;color:#333333;font-size:20px;font-weight:700;border-radius:10px}.temp-header img{border-radius:0px}table{border-collapse:collapse !important}strong{font-weight:700}.container{padding:0}.floated-none
+         td{padding:0}.contained{max-width:600px;width:100%}.contained img{height:auto !important;max-width:100% !important}.paragraph div,.paragraph p{color:#333333;font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:125%;font-weight:400;text-align:left}.text-element div,.text-element p{color:#333333;font-family:Helvetica, Arial, sans-serif;font-size:18px;line-height:125%;font-weight:400;text-align:left}.text-element a,.paragraph
+         a{color:#000000;font-weight:bold}.headline{color:#333333;font-family:Helvetica, Arial, sans-serif;font-size:36px;line-height:125%;font-weight:700;text-align:left}.headline a{color:#333333;text-decoration:none;font-weight:bold}.temp-footer .paragraph div,.temp-footer .paragraph p{color:#7c7c7c;font-size:14px;line-height:125%}.temp-footer .text-element div,.temp-footer .text-element p{color:#7c7c7c;font-size:14px;line-height:125%}.temp-footer .headline{color:#7c7c7c;font-size:16px}.temp-footer
+         .text-element a,.temp-footer .paragraph a{color:#7c7c7c}.temp-product .temp-padding{padding:10px}.temp-product .image{max-width:100%;height:auto;padding-bottom:0px}.temp-product .image img{border-radius:4px}.temp-product img a{text-decoration:none !important}.temp-product .temp-headline{color:#333333;font-size:18px;line-height:1.15em;max-width:100%;text-align:left}.temp-product
+         .temp-paragraph{font-size:18px;line-height:1.25em;font-weight:400;max-width:100%;text-align:left;padding-top:2px}.temp-product .temp-price{font-size:20px;line-height:1.15em;font-weight:500;max-width:100%;text-align:left;padding-top:2px}.temp-product a{color:#333333;font-weight:bold;text-decoration:none !important}.temp-product .temp-button-padding table{width:100%}.coupon .headline{font-size:20px;text-align:center}.coupon .paragraph{text-align:center}.temp-article
+         .headline{font-size:24px;margin:0;text-align:left !important}.temp-article .paragraph{text-align:left !important}.temp-article td{padding:0}.temp-article .padding{padding-bottom:10px}.temp-article .read-more{text-align:left}.temp-article a{color:#333333}.clear{clear:both}.aw-image-link{border:0;text-decoration:none}ol,ul{color:#333333}li{color:#333333}a[x-apple-data-detectors]{border-bottom:none !important;color:inherit !important;font-size:inherit !important;font-family:inherit
+         !important;font-weight:inherit !important;line-height:inherit !important;text-decoration:none !important}center>div{box-sizing:border-box}@media screen and (max-width: 599px){body,#bodyTable,#bodyCell{width:100% !important;margin:auto;clear:both !important;display:block}img{max-width:100% !important;height:auto !important;max-height:300%}.paragraph{font-size:18px !important}.headline{font-size:28px !important}.temp-footer .paragraph{font-size:14px !important}.temp-footer .headline{font-size:16px
+         !important}.share img{width:20px !important;height:auto !important;display:inline-block}.temp-button-padding td{padding:10px 20px !important}.video td{display:table-cell !important;text-align:center !important}.temp-article div{box-sizing:border-box !important;display:block !important;width:100% !important}.floated-left{display:inline-table !important;width:100% !important;text-align:center !important}.floated-left td{padding:10px 0px !important}.floated-right{display:inline-table
+         !important;width:100% !important;text-align:center !important}.floated-right td{padding:10px 0px !important}.signature_spacer{display:none !important}.signature_content{text-align:center !important}}@media only screen and (min-width: 10px) and (max-width: 599px){u ~ div img{width:auto !important}}
+      </style>
+   </head>
+   <body>
+      <center>
+         <div align="center">
+            <table border="0" cellspacing="0" cellpadding="0" width="100%" class="aw-bgc" align="center" role="presentation" style="background-color: rgb(248, 248, 248); font-weight: 400; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;">
+               <tbody>
+                  <tr>
+                     <td class="temp-wrapper" style="text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;">
+                        <div align="center">
+                           <!--[if (gte mso 9)]>
+                           <table border="0" cellspacing="0" cellpadding="0" width="600" align="center" role="presentation">
+                              <tr>
+                                 <td class="temp-header">
+                                    <![endif]-->
+                                    <div class="temp-header" style="max-width: 600px; ">
+                                       <div class="temp-fullbleed contained" style="max-width: 600px; width: 100%;">
+                                          <div class="region">
+                                             <div>
+                                                <table class="row aw-stack" style="width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" role="presentation">
+                                                   <tbody>
+                                                      <tr>
+                                                         <td class="container" style="padding: 30px 20px; width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse;
+                                                            border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" width="100%" valign="top">
+                                                            <div class="definition-parent">
+                                                               <!-- <span>
+                                                                  <table align="center" width="100%" class="floated-none" style="float: none; text-align: center; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" role="presentation">
+                                                                   <tbody><tr>
+                                                                     <td align="center" style="padding: 0px; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;">
+                                                                       
+                                                                       <img class="model" src="http://apps.brand-scapes.com/movie/dist/img/BSW-Movie-Club-Logo.png" style="display: block; width: 150px; height: 41px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; color: rgb(51, 51, 51); font-size: 20px; font-weight: 700; border-radius: 0px;" alt="Logo" width="150" height="41">
+                                                                       
+                                                                     </td>
+                                                                   </tr>
+                                                                  </tbody></table></span> -->
+                                                            </div>
+                                                         </td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--[if (gte mso 9)]>
+                                 </td>
+                              </tr>
+                           </table>
+                           <![endif]-->
+                           <!--[if (gte mso 9)]>
+                           <table border="0" cellspacing="0" cellpadding="0" width="600" align="center" bgcolor="#ffffff" role="presentation">
+                              <tr>
+                                 <td class="temp-body">
+                                    <![endif]-->
+                                    <div class="temp-body" style="background-color:#ffffff; border-radius:10px; max-width: 600px; ">
+                                       <div class="temp-fullbleed contained" style="max-width: 600px; width: 100%;">
+                                          <div class="region">
+                                             <div>
+                                                <table class="row aw-stack" style="width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" role="presentation">
+                                                   <tbody>
+                                                      <tr>
+                                                         <td class="container" style="padding: 0px; width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse;
+                                                            border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" width="100%" valign="top">
+                                                            <div class="definition-parent">
+                                                               <span>
+                                                                  <table align="center" width="100%" class="floated-none" style="float: none; text-align: center; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" role="presentation">
+                                                                     <tbody>
+                                                                        <tr>
+                                                                           <td align="center" style="padding: 0px; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;">
+                                                                              <a class="aw-image-link" href="#" style="border-width: 0px; border-style: none; text-decoration: none;" target="_blank" rel="noopener noreferrer">
+                                                                              <img class="model" src="http://apps.brand-scapes.com/movie/dist/img/Emailer-Banner.png" style="display: block; width: 600px; height: 283px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; color: rgb(51, 51, 51); font-size: 20px; font-weight: 700; border-radius: 10px;" alt="Image" width="600" height="338">
+                                                                              </a>
+
+                                                                           </td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+                                                               </span>
+                                                            </div>
+                                                         </td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <table class="row aw-stack" style="width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" role="presentation">
+                                                   <tbody>
+                                                      <tr>
+                                                         <td class="container" style="padding: 30px; width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse:
+                                                            collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" width="100%" valign="top">
+                                                            <div class="definition-parent">
+                                                               <div class="text-element paragraph">
+                                                                  <div style="color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; font-size: 25px; line-height: 125%; font-weight: 400; text-align: center;">
+                                                                     <h2>Welcome to BSW Movie Club</h2>
+                                                                     <p style="color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; font-size: 18px; line-height: 125%; font-weight: 400; text-align: left;">&nbsp;</p>
+                                                                     <!-- <p style="color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; font-size: 18px; line-height: 125%; font-weight: 400; text-align: left;">You can create any type of message, from a simple note to a fully designed promotional email. Just drag in images, buttons, and links to your social networks to build the exact message you want to send.</p> -->
+                                                                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                           <tr style="border-bottom:1px solid #ebebeb; margin-bottom:26px; padding-bottom:29px; display:block;">
+                                                                              <td>
+                                                                                 <a style="height: 100px; width: 70px; text-align:center; display:block;">
+                                                                                 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoGBxQTExYUFBQYGBYZGx0cGhoaGh0gIBshHRwaIh8fIh8hIisiHR4qIhwcJDQkKCwuMTExGiI3PDcwOyswMS4BCwsLDw4PHRERHTYoIik5MDAwMDIwMDAwMzswMDAwMDAwMDAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMP/AABEIAQMAwgMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAFBgQHAAIDAQj/xABKEAABAwIEAwUECAMECQIHAAABAgMRACEEBRIxBkFREyJhcYEykaGxBxQjQlLB0fAVkuEzYnKCJDRDU3OisrPxk9IWRFRjdIO1/8QAGgEAAwEBAQEAAAAAAAAAAAAAAgMEAQUABv/EAC0RAAICAQMEAQIFBQEAAAAAAAABAhEDEiExBBNBUSIUMlJhcYGhBZGxweGS/9oADAMBAAIRAxEAPwDT6MuLWsJLLiEpSpWpTpmQIFoAki3xqTxfxJhcyhAQUlBVodi4FoJH4TzT8iKRks14ltTR1JMDSFHwGqPy+NPz4pRlqixXR5seWOiS3S/g9xuXLaVpWPEEXChyIPMGuYapqyBtrEocDivs0glPVJ3Kkny3G1D38t0KgHUCApKh94KEgxy/pVOHIp7Pk5/V43idrdAbsa1LVGFYI9K4Kw9P0kXeBvZ1snDKOySZ8D1j52qd9XoxkublhCEQSEvB2J5BMFPW50np3aySaWwcMkW93Qtqwax9xXTY8q8GFVfum29jbz6U8u8VJUkgtqJlRgq7veaWgyPvXVzm3OoLOe6V4pWgxiCq0+yFJdHzcB/ymlpz/CNc4J7SFNeFUDBSoGJgg7dfKs+qLgHSqDsYN6bs1z1D63HC2sOKaW0mFDSAtbhkzeQFp2O4Nc8FxEW+xBQShpvRAO51hU9NhG03NeudcHtUL+4VEYRZ2So+SSa8UwREgibiRuPzpvy3iFOHs2l3QXC4ZUATqVh1EGLGzKx5OedcMdnSFqw6i1r7JspKXIUlR0BKe7tpBAO1698r+01yhX3Cr2dednTc3m2G+znCo7saobbOuEKTzG8kK8xWisyY+7hkct22+SAmPZveVX5nwFeuXozVD8Qq6Kzs6N5qEOqSW2w2AhKSAAASNzbr13tUX6mYmLdaNKxbyJPYHdnWdnRD6rXisPAk7V6jO4QeyrOyrV/HgWSPfWzGLBMEe4il64XVj+3kq6M7OpWV5aXnEtJIBVME+CSfyrqyzquKMcKYbRiWlqslJJJ6d1Q+ZFDmk44nKPKTozDK8kYy4tWRf/g7EfhPvR/76ynDE51iNatJRpk6bq2m3wryuB9b1fr+D6f6Lo/S/wDX/RNTha2dw7jWl1aC4hXdbSlAJJTYg+QMz0EdKZFZeJoqvLtISgsPDSB9ohQWkzf2Rq03J+6PWu31eRaEfPf0zFPuvfahPyz6viFpKUdgqQFISCiTEGQdtQsSP0g4cCAQmCAgBAB3GkR85qfmz6MI3rIBcVYJUhMkEb6okRvXVhIWlDgMhaQZ+B9ZBqbpp7s6HX41pVfuaYLIA4gkCg2KysJJBFN2DztGGSStJIFz5UHGdM4x1RSOzP3dWyxy8jTvqXGemXBN9B3MWqKtoAKyyvBltMS8LFiKwYWqu4zmPp0L5y3oK1OWVH4i4rDKihlMqG5ULc5HhyoGnjPEBQJSkp5iBHvoe8H9E2rD68uNcTgTRHIeIGMUdA7jn4FRf/CefzoqrBUayipdK4uhYTl5NbfwtRpiOX9K8+qkcqx5fR5dP7AH8LP7/fyrcZUrpTAkHmPzqSwxPL9+tA8rGR6VMXGspUdht4Cu38IVcwAY5Tf02pkGF8BW31YnlNC8rHrpooV05T4UvcYOdnDCfBSiPWB+fuqwM3lplbl5AMEdYqvc2wy33EFIklMAdADufOTelZMzexX0/RKtYv4fCrcMISVHwFdnWlNkJWlIPlf18asXgnIOx0qWL6jPS42o9xDwIy+wtSEw6AVASd+gqVZflR0pdOlC3yVnkj5Cgm5vv8xNOrOWSARzFJWU4MtKWlwaQCPa8+h3q1sFhQllBOwQD8KojkdEOXp0vk0Av4VWVNWsyd6ymUyW16O2HwnNW1LfEbGNaWXcMSQTcJvaAIKTI5bpHO9MuKITuq/QfrXEYmxEUU8ayLcXizvE9ivs1efK/wDSCvVAjVyB5DoKPcIcQJb+xcMtmyVfhVP/AE0wZrlLT7RSudf3VAXSf08KTmcnUy7Dhuk2A59D5VJOPaOlhl39v7liP4MEEEeF6rLG621PuNJJZQs3FwgaimDzAmPKrE4WzIOw2tXeG3iBy8x8vKg/FWQB1x51p1bXaJKHC2e4qx1B5G5Ow6c5mhlljKrHY8GTG5JfsQeDuIlvrQybyDvyAkk+G21ORwZWCgbqsOl/KgfCmSYRhSuwLji0gfarBAOoD2QYjei+bPvttleHALgIgGb3uLAm+3rNOjP4NxI8sH3EpfkAW/o0w8KTqUVfjcgkn3VXPEmWnDulsmYqz84w2YIflK1OJVcICnABa6ZbEAzzVYzXPjHh9LuHUt5ADqU2UD3gfEiJ8oqaGVxfydnRyYVNVFVRUeGdU2tK0nSpJBBHKKunJni8w24oXUmT586rNjg19TK3SpIKROibxBMm9rAnntVicFZmw4y2whwFxCBqTBBtvE7xO4qqM03szn5cUtKtBJTXhXqGOoqatqLmkjjDjYNS2xc7FZNvT9a85CI49xgzLNMNh/7VxIV+EXPw29ajM8Y4PYqKfEgfME1U7aXsQswkrM+yJPx50Sd4XxiEFRwyinfaYt4UtyXllUcL8IunAht5AW2oKSrYj971u82hABWUpkwJMSTsBO58KpHLc0LQKRqB1TAWQQfLnRTP8xViEJcJUVpEKkzI5K8CNiKyNN7sb2dth44oxqFJUymNN+0VuIAv7vnalnh5kOOnlqUYvsOQoTgs2K2FIJ7yRvPtJ1D4zvU/ht9KDrWoBIIvff0mgyNqLLMEFFpeCbjS9hnELCU6kLj74UoEwJ3SpHW9pqycpzNDzaVjulQuDYg8x43pfy7O0Yh3sULRqQQIggr2JIJA2B+BqTmXDrT73auk9mjSEIClAWPQHTBi9pvSItydDMulK2T8dkzTziFqbQQkG0C5JsT1gA/zGtc4VpQE/i+Qj+lEmVIAhOkBNoFgI5W2pcce7RxSupt5cvhVeKNHNzuUjbsvCsos12cDyHKspncF9kX2crUoA/Db51MwmXhIknUeguBRTupEJFv3zNe4bEzIEW9f/FNeSTRz44YJ78nJnLkplSiAmOdL3G2DQtIeavpsq1iOR9D86YMWgOcwAk3k/kKj4jDpUNJKikp25R5UmUNcd3uU4cvamnFbCFhHCkhQMEGQaI43MsQ64gpYS6VQntEkoUz11R7bcTBO1xvBUHxzSmXVIO6T76lZXmJbWFCoUqe53ZvXH4un4HPANJaQEDlvaJJ3NqkKWQCoWIBItJ9BzqLgXe0SFo2PS8eBNTGWproLS47cHCeuOS582QcBnBUlMLUpcX1NqRB8lflULibGgNyu5J2qVmuAVh2XFthCUpkgSonewA63pawuXPOEOvHnbUCQPGOZ6Cua4NPc7sckZL4kLiTPFuJGH0huY1kc7RHWItTFwTwn9T1PvkKUoAp0gq0CDc2nUZiAKHcMZIH8YVuyQnvRAAsbAiinF+dBnUENK7YTCgIUfJRICh4X2iDVUKSpEGZycmDfpF4nWlrQydCVWUrZRHQX+PjVZYRhTzyUITJUYCevQe+t80x7zpK3nCtc84t7rU5fR7lGlxeIUnSGWwbiJUsxfyGr4UU5aVYOLHqdBXI8Azgvs5+0H9q6UkobPjG5vtMDc8psbL0pDKQFdoInXY6p/wAIApMw/CSHUrfcKSpRWe8kqIC+hCgJ2tBv1qNjMJicFh22cIs9odbiyoiAmwSINgLjoLmpbRe4Oq9A76UMiQZfbSELR7RH3h1PiKrlvMFhySTfe5/OnXPM2dcYebfIKgnccjaRIsdwZHjVfkc6ZgUkmmB1FWmg4Gyodoi0jb5ijfD2lwQnR2kEaHD3SLe40Dy7EDQB5iuvbAKmLjn/AEqqcIyXNCo5HGXGwzIaQhSXktltYJCwVBYmJASQYgC5KtuvQ5hOKVobWJSo2KDvfkklJt5fGlROZShI16PahSSe6mTMc+8oqPgDRjhxDrp7PDBaZ9oqiUnn3xBME7DTEbm1SyejcrjBT+79RkwuO7BjTqKlOSSdRMTdRHhKrR4muWGWoDVBjyphyvhFWkDEOFyBYFSzB63VvUpzKOzUCPY5xy6HeaJZGldC32nKrtghGZiB3F/ymson9U8fgKyg7genGQsQ4FK0lUAERy+PP0NdiEpGnUEzyHP1NDc84nQyoNtp7RZOnSDz5iwk+lRQ662jtfYSozpSpzTB8FpPyFXW6PnNKt+wusA2IBnxrsjQkd6JAkDy+VBcDnDZc7N9OhZiCi+qRItuPSaL/VmyggTJBEgybg8gImsk9qNxqpJvgrzOHdarnvEyCep5HzoYH7X3G9MeecKPqBhIWnwIn+WZ900Gfyd9ABWggfiUkiAPHnUaxvg7ndhWq9gjw7mSgCErKTuPHwo9h8+dBvB9KRsMsA/mKNYXEGd6ycJRfoOE4ZF4aG97G9qjvKkSDHKQQQY8CAfSh7uZltRUsa0iD3RdPKSn73mLjpQ9vFH0rsF6rxS4p3vuFLSl8dgzw2tC3VOoVIUmxH73rtxIEhlftSoQbEz4CRp9PWhHCmHUzie6D2bs2/Cev76+FF+L8KpxtQaV3xskmAvwmRB8fGqVGlsQznb35KQzhXaOOrvCV7qgTHK0Dlyq0MszdvEMdpo7NLqysptOlCCBtvcKpQwvA2IeI7dPZNgkquCoybwBIki0k+MHajGfPNtYhDA7rQQ2kadhCRqA+VBkaew7BCS+R5nPExxDAYSC2mZSqSCojY6pA/SB0qXwXmb5ceL7wc0t6RIFhqTt1G436WrbN8YorCcOW1MkBJSoAbzaD4D4VxybKgziFLUQhGi4myZMk+AgbeIpTrTRV7Yv/SCUpCQ2NPaSojwBg+kgj0pLF7UzcdZu084ksrC0kcvuhMhIuB3jKlK3EqpfQiI9/wA/0qnGqiR5JapWS8tEnTzqa41ZR6R8TUFAAMzFEWAVDmqYA5zfa1E2bFbUeYFamxrBi8Dx6/lVzfRfhEJw+pNyTvzI5H86rTE8MYhIGpA7okAqG9t78jf0pt+jniEMzh3FQpMb21eI9bVFmmrT9Pcsjhm8Ukl6otEV44JFcWnwedQ82zMNJn2ibAD92o3lVEMccnKlybaR0NZQr+MD8Ne1NqRX2Z+is8RluIbl9ErQCpPaomd723Rud+tdF5m8WgjvdneCTPv5TVjIwaHTrQdCuak7n/ENlDzoJnnCgcWIT2U7rbTqSpU/eRIKPMSK60p3scLHjS3XApJwl0qNxOw5HxG8+VvGnzA5klSUlAkgQSfa9evnQd3hLENogKS4JEgagfQcvOuDPaMKhSSFbXmf6+Zr0fkt2eyVF/HYaW2VKMmBNBPpIxAbwyUDdSreg/rUzKcc4qwFKv0nPuS3urTOtW6ZnYdB51sLUtz1fB15FZlJ3FM/CnD7jw7ZwlDAMCI1OEbhM2AHNR/WF3J3GgoOYlZSykysgEkgckgXJ+QvVg5NnRfTqbcIaBhKCgpDY0ggHwuk+A50eWcWbgxzW6/gnI7RIHYYdoIT7WoCViDISTJ6XO9+VRcwxzy0pcaUUhR7qQkd0g3SREH1o0FnTcRI5XmedBXntKVj8JC7ecH3g/ClqvQU1J8thBOYOBrUs94pNo5gUJw+OU46pOrQ7p1Im4WmSDadx+fODR7ENJcbjoPyg/Okb6SGFtpZcbOnszJ3sNiq3SZrGNhG+Q2jPwiz8JTZOs+yJiBPLcRNK30gYcagmO8mCD1nl57VOzrAnFjuuJBaVodj76XABM8x3j+4rm/w+8vBOJWlS3GpSF76kpJjxlMDxiKnnHe0dHBJaN2KDLLwNlEgAk+AAk1z4qzFYUWAskpADyhsVkCW7H2UeyepCuUVKXiTh2yue8qyB1UDIJ8EqGqOqRO9BGMIZlStUmesnqSbmvRrlmyjJ/GJrhMEVC3PeaIpykqTEgEDcnnP/muuFQduVG8E3qJKjCUiTtzitc2HHp4gxGUkiQn2lGBz93TemHhnJ+xHbuAoIVpakTCr9+D0gx435CpmV4OVJc5fd8B+v9KPLTqWgEhKAY8hBuPhSMmbaijH08U7IbDbiRAIcHPUCJ9fun31ybyplaoeQpsmSlRIgxfurB+Fj1F6nlRbJ7RMcgtEQel/Z9FbXtzqe5i0ssnte+lfskJ5kHdJ2O/nHpUySfJU8soqo+SNhmQylRDxUAJ0gmwIEXnaCDtXbD4oLG9cU4IutiCgR7EJ0ym8g9L8q3y/Lik360vJKUapbGx0aW5P5E/u+FZWnd/Ej+YfrXlZrkJtexUyLOH0FWntSiO4QjWASYSFGRCDET4W60wZfnWKCVvPBATpStCNGm2ywTJIWkiSLiCPQdie1JQi6FLOtQBKdJtpRFrJSJibFauldMnU6JKSZO8nVPnMz1vX0c4qSvY+KxzeN6Nws7xQtDby14dQLS0oWNYnvBJCoAMo72/wF4JfVe1QO10k8lImINxE+cek1ywbqVkFxCSsCNUCbcr+dFWwDsallS4R0IfLe7FbOXThEkogqibnYGdvHakjBuYnEv6AoabqUVAQhM3JIieniYFWJxDkTWIUda+zVASkhRM7GSnYXG/gJ6VHweSNYZpSNKnJ7zi4Ek8iU7kAEwBPPmaPXpja5DjhcppPgBDLMMpOhlkEgyFqTde08u6P7u3neiDfDSW/tMO8pDltSVkqbXAjSpJuLWlJBEDcWolgMI0UamnZTzP5eHlFaZ1mLWDaLijKtkJn2j+Q6mokpuVs60nBQUYrg64bGGdK0pSdIJSDISq0gGBqHjA8qH500kjWDFiD4ggx7j8JpBY4pcW5dwgFUpnkLmPyoths5OJUEIEAd4qJgC1p6XiqoWc7NH0NeU4o9nfeJPhN/wAxUHNFtuHs3u8gmYOyheUnqL7VFfzpplCEJWFKPtEbHy8L2qFneI1tg7XkHxo2heNEjK8uW0lptSgtKwtlSkpMwEns1HlIS2BJ+8aasiQdKkyJKjq56okFPLppnoBS3w/mJSAtNwSJBO142/fOpuW4oIclBUElxUm5AAMX9An40tlFOqK8zfLO2DcW0SAI5QJnxgD3VOPDwLBIEOITqNrR+E+PPxHpTJm2T9hiFFI7ivtG+kGyh/Tw8alZU52+HWNQS6lSmh3Z1Skx5SkbmxKT1qZyd0dCKikpLyV1pUABHXzrqMwUk3CTHL3H8p9ak4pgIUpKhcG8+k1xcwhInfy33O/rRxafI2Sa4DWX8SqgJDKQBsATP7v8vQ5h8yC0AlKgeh/I7EUu5VgRO9xO+xEmI6H15eVMTTaQInyty/fQ1N1EYpbFWHb7iVhMS54kDl+Xj0r3GtlxQXp0pgAImQI3MCwJ8OgrfDt2kC1uVSbjyP79KhWStgm/lqSOeWwlSRCZJkAQAepj5j9Yo42BJJ6n1oIywQ4FBO1wd7ReOV6nN45IGtxSUJVpCCo6ZUZ7sHY2pykpUTZU7sl9g3/u0/yisrn9dT+JPvH617W0xP7iy/jytxzWZOsgxZNtwOcT86IYNSUQRIJBk+6uWDy5OuYkkFVjY6jv8RapGNZCTERAtf3133JcI+VhCX3M2TirzPOjWFxCi2pSQVLA7oEX6b2jzoZhMEmU6phXzoliYaQltJMrEqPMD+tJySVFmDHKUgX/AANS+88+tbqwSoIICUCdhaVX5n3DasyzOtLpwz6gVx9muwDoEyCNg4OYFjII3gQsfiHUmEKIsbRyFKPEOMUhbTlgpCpBPU9fM1NDI5So6ssCjAJZmy8HFraUUrQogwTBvz6giPUUmcT5hiHzpcKtSeSjP8vKnjiDFtvNlUwoEFChc7wbDcEf9IpQztatEpaUlKSAXCk94mY720mDantLkn7raoGNMLVbug/eUTsOZJ5VY3B2SIQ33SFBUEqv3v6UgZZlnbKsdQTCtHIkXv1+NWzkuD1MoUlUGOkfDltWxEZLs459gWmkErZCmrFRjvJ8evOguacNkta8M7KSJCSbHyNNbuKISUPCxETFjS0h04QmUlzCrNim+idwR0rdz0GhSyDHusvllaClRuEn70b6T1i9MasShanIXrQPtCiLp5KER3gJHv8ACtM64dbeR22GdIvqTuQCLiOaSKEZctWIUokdniW90CwdH3iP7xvbnQMohux+zBSHUMuhQN0iJ/GjkOkJHxoLgnuyxigmQlbJK9PVtdleekx60Q7BtbDb7RSkoSjUlUiQlK0pAJt98gDrahuEbS59ZfmAhrsx4l25HoE/81SS+4sxr4U/Zz49y7Spt5J/tNQV/iHP1BHuPWllCz1MEmQI/fPpTjxi1/ojSSZIWqOsQP1FLuEyxblhsATef3JmPWgeTSXYceqFv8zfAPd6LeQ5XPLzNHcFhQvY7RP799b5bk/2ehuQ4reUiw8CLgHz2FMeEykMtwIJ3JjoKky5HPgOWWEFS5BxCUQkW6itmWdRudIEmd/SsGF1LMyefhepAXbRMybnxqRPcyUttjXDPj8VhtIpE+lbMSChpNktySBzWu/wTf8AzU445aWkqWoiEAqVp6D8+VVLn+LL76UlcmdS/BS9+ogTFX9HFylb4RN1MklseMcOBSUm1wDy5isqy0cMYZIA0KMWmTeK9qj6j8/4J+yvS/uGWGUoCTqvpG8bwJ+VZmQBTqMT57/u1CWcUEspCHAtJUtOtRn2SDfabKAnwNC84xp1wleojnHdFo7pncE7gct66scbkz5nLnUE0kOGXYkL0ITvPha4j0sa0zHGpOIUVKhM6QJgmB8B/TrQjglDnbKdcWToTrIJkmxjfa/5Vxxsj2wnW4qZk7qM7nlv5AVL1SUXSOr/AEtvJFzkq8EJ3GltZQq+skTM2mwrgjLBiVHfSjuyOZ/oDv41ycBW52bftXufu3uoz6fCimBfCENtlRQEWlNjcwpW29wfSg6fFb1Mf1/U6Vojydcsy1GHJlRUuI22A5AGszfAfWWSCJCgCOsgyNvKp+aJ7FA5lVgekc/CuOCJhI5CYAMTPP4n3Cq6VbHKWtyt8gXB8NhEFo6XI6WPnRD6q6ftWHFNOpgONqEhZGx6G1tQ5RtUbEqdD32TiYF9HKJ3nramLD4xue+42JF++BHOscaQ9TcuTTC48up9mDsQai4/AOgEslIPNChKVe7aiC32SZS+0o9NaJ+BqUhQPKfHlWWHpYmpxKm/aZUwv7xAKm1eYFx5iiGAyzDvK1feJ1AoV7J6g7jyo/imkkch5AmlzEYf6wtSGkew6EKVEW0JJIiBIJilTZTiOuZ4ZxiSi6TJUI9rrb+8ReNlHVsVV2wWGDmGToTAff1R0bQbe/svcuuOA4ZfAkuKTE3mRFwdQUYimDEfYYdvTC1BHdIFiVnukDpJ91TSXLK0+EgJnDJfdSlPsIBE+J3PjRNvKQEpS2dI5wAenurthsKErITtNEEhC5TIJG4BuPOoa1NtleTLUVGPCN8JhkoFhXUil08RJR2nZrDmgxoXKVG8HQuCF+RE+O1GGcwlIJSpFhOsEASPxeyffQtEs4TW7NMUykbQLbUPWQRPyqVolUqUNN+e81wdSgGAQAf2ankijG6EfjzMezQEA799d/up2HMjUqPdQnOGFMpw2DSPtf7R4gSS46Y07bXUPJCa7rxbb+Yo1q7gJcAk3Df9mkCbkrgkDeDvIrzhdJxGKcxLqdj2sHkVyGx46UD3pFdSEVixq/Ct/qJk3kyUvOwfy/Kldk3Lq50JmFQNhsIsKypnbK8ayoPqpF30kfZpluFIaUwT9mlwKSq47Mnb0Mb3gpna9csTlpTqBSo9BdNxbnI+HKmFOFQQo6lSAJIi902UOaZ328CDegnFOOxGGYUtLyOzCUhsqSkrK5QAm4sI1KJuYTfaT9NraPjHgU6vkK8NYBXZKDY7zliSSdKQOd5uYsI2Ndc0yNTTZClN3EC5B9Kr3AZrmDmpLbpbTYuOiJUTtH4bchfy2o1lPDjbiSXNbqyBKnFFV/I92fSo8soylbOv0uOcIJLYjYNP1RJK4Kisa5NimCAEnc7k1qtcqUbQTIiAI5W5cqzMuHFpJU0okBOlTapIiQe6JtdI26eYOrDWhITufL1jy/SnY53GkS58TjNyk7slYdzUYJMA7z8aYMHhgVSNkiZ9P376X8KkhWiDKo7u9PWFy0oZgWWRtRPYTBJsSc4w7ZVoHdBsVXJgdBI/KjnDnDOGSgKS2FyLuOJJUo+JVt5ACpGC4YUVhTpkHxO1v0iKJZ1mCW0aG0gqAsjYDYXPIX5dDXm72Q2K0ptgvNsswpB14dpcDbskSfeKDjDYdsy2lvDRzQ4UX/woUlJ8jNTUYdxyVuugj8KO6j3+0feB4UCdzRn623hncO0EOd5t1uUnUOpG5mQb/OskqNhJsOL4hLA76i9+HS0Uk/51KDc+tRsrx2LCFqS22ntFqWdB7QiTaYIQjuhIkKMmTF6mY3L8OVJUpkq0ncJmfhXrbmCSruuBpcXuU+8be+kyRVjYPyjA4jGuLLzznZN7tyANQvskAEbGT1o1jMYF41lhJ7rQ1r8IQQkegJP+YVozxFhmmXS0tLnZgzpsCpKSQD1UrSLbxQTgZ4uPuqUdTi0Kv4kgn37ACp8myLca1W/C/wBjfgAm5HXegGbNFmS8kLSVKUFgd5SinSkHyF427oN4oopfYIWtUQkTExPQX67VmT5qX0FeiAFQPH0qGN1ZRw21uhDDrSgdZWhfJSbgnxG8etMvBmNQy2VOKXpWdKVXIlOom24sCZiBF4qZjuEWHVFQSUbewYuSZ7pBHTauGWcLPMH7N8QFLLaVSQJSQCR1uduZO+1EmhuXPDJBx4CeZISuFogzsU8/Ub0tcYY0sMaQvvO9wHoD7Rm0gC3moXpywWEDTKG1Ed1MEi0/rVT/AEk5mHXFgHu6g0i4sBJcVHw2iBYm8Dhxa8qZM8umDS4QpOJK3O0OxuncGLx6mJ52INPnAWCcKHHVmyylIkXOibkzcDURy50oZbglOLS0lN3FaUjzPvgf+Tzq3sPl5ZS2y2mUpGmZACYG5neTJ9ap66fw0IHpFUtbPPq6OiveKyt/4Z/90e8/+2vK4+x0Na9/wwUw9iE3EgJT9ooKnVeLTyv0qNnrzWIb099wQSoK+4Ux7JmI72wArrkWZuai2sDTCgsKWE2gghO4nci+5351w+qfbaLi8T67+Nq+yyJ3ufD9PpfDd/qLWhbMtIJCUk728D8jTrwhiFfV+0tvAG8kC5pW4kx8OqC2xEQPPmT7/Sg+R5k4wsaSSgn0B/I1z2r3Po1SVMbjxMGsaUuLCQsQkEmJ633naRXfGrKySEjVMSLeRPM71AxuGaxYQpPdKCCOuoXj/N+lE8hwq8Q8spkIgaiY3Ei0Wjx50eGL1X4JermlBxvfwGuF8uCPtVd5ZFpFz8dqaWGybq9f0rlgMEEJE7xv0qSsiP7o/KnTlb2JMUNMdyJm+OLbajcHlpEn0HM9KUHMWlUKLY1EmylhSgBubSAZj9a04gfXil6A4UNA97szKleAP3RsJ/ZiuZcGlAMgIQkRASTebzeb856UUI0JyzsLEJcBBunnfevP4K1ps02RzBG09DUBrF6ZBPLp/U13w+Y6goDy6b+demgoMgO4BxoqOFfLZTJLLmpSD5TePCbfCo+Nz0uI+zS2h9QIAUq0gXU2rZUbwbiNqZMtVrSkKkxyi1o8KDZnw+F4hHZtFSVQVlRGlAEbDcqJ5+JvSGy3GiPiEMsYNDAUStR1qJvrJUErUT1lUetEMhYaQnVJSvkoXj0qJx5lLrhaDAs2hOpFgTBUUkDaBqVI8t4FLAzJ1owsFJHIgj3jpapMy1LZ7nTwOo77WWYnENuy27pKjsY7p852PjUzLcGlsFATAFx0vO361XOE4lSYB939f3+rHlXEmmAFyJuldwB8x51G4yX3IbLHcfg/2G5At0Nc1uJEE3NC2s4Q6SCdE23lJ/MfGvRim20qXq7SLwkmIHPrSnqvYSoPzz6/6bZ9mGhpxY3AhA6k2H6+QNU7izrKpsB9mkyfukKcVIiO8QJnmsTO77x5m6fqyHkKT2ZmUKmdUHSQRuPDx51X2WvylC1gyZCZ2JkkxYkSSTsdzBtV/TQ0xcmJyu2oodvotyOXF4lVwjuI3gqI7x5arEQY586dse0BeYEx5X/WoGU5Wpltli4b0qLikkpKFghU6pmDJHoKPMsAhXP9akzT1sYpaHYvjCD/AHrn/pLr2mDsRWVLoQz6mXv/AAVerLk6A646lTupQUkqHegqEwLk+zy5c5qb9avACp2AjzgSSDYC3dv1FRXMO249qSh1QUklQtqJuCTBI70BV53NhR/BZes3S2EiI1K7x84IKSfICvsHxufIpPVURezHMmVygtA8gVrFvcJ9JpeTgQCdIMHkm49P2fSnfFcHl17Uo2PIWA2vBJN426k9a75krD4CzmHcUAAQoFMGxm/IjkDcwaFxg/A+OTOuHt+YJyHKV6AkoXad7CeXL8qbfqL7TaENOBvlGiQdu8SCNMXMTBFuddcg4lwbyFdkdKkgShQhUdQB7V+nPzqV2uoCJvsCCDfwMGlvbaqGpeW7fsjZBmrykHWNcEhKxCQvSVJJNzoMj2b7jxjnxNnnZtkzotck+yDv5nwokphKdWn21gajPQW8J5TvYdBVc/SavssIEgmXlnVIvpQNpPIHRt0oW1fAyKdU2AGOMOyd04dDa4MlSwq5uYEEGASPjRfLuO2nAQ+kNOczug3949ffSBljcDVFq2dMqJi1EuAZLei1WMWHUpKFBQP3gQR7x8qmtsJt16C1VHhsQtoyy6ps22PQzebETypky7jIlSRiUkG8utj5on3kEeV7BNsPHCNlhsvJbSRIHjUjLsUlaQpJkHn1/pQJp1GIYBYWl1s7qEyDvB5gxyNEcCst91ae7EJFvl0/SppFsKo4Yh5Rx7TbckrQ4HQNtLYQUq6CC5AP94jnTLi8pS4AHG0LEAQoAj4/OhHDgH8SxFtmGimeWta9Xv0o91MTjgQlRJ6kTUHUbzT/ACHwk1shUx30f4VwylKmldW1W9xke6KD4zgXEN3adS5HJUoP5g/Ci+dcW9nIQW9Qk73AHzJJFgKXct4nxTr6Ehz21ABKvZMxvYkDy61kZyassjin+hFxisQwPtWykbEn1vIsSPOomOzh/DtlRSYIMXsZ/rVsu4KR3wDa45e6qq+k1htp5ptEixWtEiAE7RaRPetR4pa5KMoi5TqLaYv4nNnMS3hsI5oQEHvOXvJtq6AT8qeskyRLS20jsHdJBC1GdKQRJSmCkHxBvO/KkrgwOqfU62026ohXccKQCCbxqIANWJlrehEhltt1UEtoCQQeSbGBe5IpnVT0rTEHpsbn8mb8WYh9xxDDawUOGFI0ydJInUTaOVvGiGZ5w/gkgKCHdQOjSkp7wNgRqNoIuI2qKjABLrUn7YLDrjhsEITMp8EnYDwJO1cMbhXcY+y6vUllaVlCBY6Bpgq/xgz1AA9I4tabH1FtRfA2MZ2opSVNkEgSL2MXrKH/AFZf4Vfv0rKRrkL7OM8ybh04dOrdZuSfymijST1qu83zXGsqWW3nV4VJMOTchwzcxZQJ07d0xtTBguL2ngkNpUFGQG5EnSOphIHQmJvblX1Moy5Pm4OEdkMi1gbXNV/nnFGJbfUla2y2lalN6xqRAJAskd5dpEmBc9IdcS8CyuEHVpJ0neQJCTG4ketA8vyd195S16XGVBE9orUHfEJjuETIIiIjmY9BpW2gsilKlES8nK1v60pJWVDQASJJJuoxIvFhFum9WA2g4dIC3S45a0khPWColUDkCeflWy1ssKLaEJKlApJi6eneJJM3vvXqEIFydSheVfH0opT1ARhp87knDLhIFyOXP3mkX6WFl0tJkaUBZJjbUUz5nuimzGY0ITMxSDxs6FgFajonYbqM/KgryGp09ImoVySCEj410SivHX9WyYHICvRYX91eCNkgz1FbrdHsxHjWqFxWyzPT1oZDYEvL1qahTayCNUEGCNQEm3+FP8oqe3xlmCBIcQ4BtrQmbeKdPT40DUSEpItqJHoIk38T8K3L9iBsbAfM0plUEmWHwtm7vbuYt2E62mkECYulKhEzzCrciTR3F4YYkhS3SjVIFwoJiLpFjJA/5jSRlWHWMvU/KnAl4BQBJKIgQfCCP5qKZRnCVRf+lcrOpKbaOz02CMsdxfyD7HCjCVDShSwR3lrKgVGRER7I8r+NH2sMhsJSlpKQLgJSBHUj9aH5VjVxKe9tMdPKjbGJQoEmRPXy2HTahjuT5tcXT3SI+Z5o2yy484e4hJUfQbefL1qg85xn1hbjp3cOoG8gck36bem9O30vZtdOFQr+0IWv/CDYe8T/AJaRsMyVrShPMgD8qt6eNR1Mnkt9KGT6NslDq1EmAgEAqFipUTPjpt4avcw5y2WjChBIn08xYjyrZlYwwQllENpjUYPeUY1E+MAVFznOysrQkAo+6FC8x7QjYnn1m4NSTl3J3R1emhPEkvHk4sZ88kFIWSiIUlVwRzF+XhR7L+LkqcbW8i6EqSCg27+iSUn/AAjnzpMxOLCYkA/EfCCK5YfFjWCLeE2P5infTprbYZNYpfcv9MtscR4f/fJ9xrKQfqOJX30oTCrjvp2NxzrykdifsR9Ng/EyGtCyNCj2iFJAbUFKgC50ggxMzIOxBPnI4fyVxxZVEJEp0JTMi0gkmE9JMzTHl2WNISAtIUkJTZYESAE6iOphPurq7nSQpLSCAkgaUoAKYEzYdL135ZX4PlI9PGrZ1w2PSwnslGUIUYOq4B2TOxg25mK5YrMXHLDUhO4AMHnHjeaIYPhxDgJcKpJ+6RuN/u8/heuqMiQEJIUQqBOxExe0A/GkvJEb25UBW8PogrOpQsPCuasSInV6VzzRa2nC2v2rRGxnYjqKLYLItYSVpN4JExuLjxPuotaXIvt3shbzHHHSeU0o8Sd7QkWSBKlHYTen7O+GR9VU8hSy6EJVptBkpn3An3VFyXgnD4xlBdU5qBUklC4QdJTtzJiR4FKt4itlki47GY8Uozba8FYu4kGAnYWFa8pq4nPopy4fde/9X89NB+LeA8ExhHnWe1DqAnTqcJTdxCbiL2UaBZFwOeNlbJVWyj3bVaHC30aYR/CMPOqeLjjaVqhxIAKgDAGk2FBHODmP4v8AUUqWGw2HCZBUe6kxMWuenKsc0wowoTMVilKPZf7NBkdRITMecD1rn2gFyL8k9KtTij6OMGxhcS+gulbbS1jUsESEmJATVYcO5UvEPoQhBWnWkL0zZJNz12Cj6UKaY6Loa+GswUMBiEJSpUPIcUUn2tQAKYG4ARJPjXfBPNOklaU6hcz3FCTa1lc9jaKdMq4KRhWUobWsKlJ1WglamwuQRtAgXsOe1D+OuHWEFDwVpWtenvmUkhMgTukwD7qjzQ1Ozo9L1Cj8fZFwayky25EmQCOv95Ow8Io41mq9J1INhJuDtvERSEpxxlUGRpuZuOk6r/kKsHK8nToSVlRUQLC0b9R5f1qdY5Pgrz5ccUnIqjirGF3EOKVHKOcCBYE353rfhTDfadqYCUnSJ2JIPyF/UU58XcJMdk68Er7YNrWO8IJSkkSmL90AWi5oBwblqPstaQS6QNtgpQEeFoPrVUnWOv2JMTjLLfhWwnjVd0d4QeUzzmf30rlh322XJcAV7JIIJChvfnBtTO/we2W1BoKDgSdEqBAImBBTadvCQeVR8gyTCY1vUULRogFKVxeO9MgmfWkwxOLor+sg4t715FZ3LnXXZYbChdaUwI3SCBJgkak23qBmupCtCMOpjkASpSjYD2iBzkzHOKYeN8sTh3EIZU5dMBIUCYUTsBB3GwHS9K+Mzl4AtLWopCpKVi8pkXJ70iTaaqgmLeRTSknsFEcFYuB9n/zVlRUcaYkADtVW8ayjpgape0F8VmJWom6p6WA9TOxrXKW0pcQVb6htNhIkChoxNwB13rvl2Lh9ozstM+UiY5kxMAXNOlKtji44N7suDAiB50o8K45xzVqUVIBICiTEg7SefP1FNGCAS2BM+e/xvSanjDDNoSlbnspAhKV8hy7tT+KoabcVpScVhRN3CEqvMALHoN1Uw450IbcKTMIUbG9kk2PX84qu2M8OLx7SkoKQlJAg3i8KPIGVcqbOMFlGCfIAJLehMC5LhCAABee/WyvZAra2MJb1IKZ9pJSYP4kke+qPyji/GNqZbZeLbRcTKE6Y7ykhUggkcz6zVz4F3uIVdKoBg7gwJBHhVK5vhEtY9xAMlOIgf4e1MCIFwIkyRBHStiw6sv5ardKovinifFqfxLKn1FouuthsBGyHDpTYatwm8+/arsxOJF718+cULR9ZxF1FReXdITpIJJUdyZkn05mvQqwZcF7cCvhWBwumT9kkHYaSAJBFufQRz2ihDWRv/wAdXiy3DHYhvWVJEq0IsE6tUeMRY1L4EUBgsP3rdmiBMxCRaecRBgAV0a4lWrMXMFoRoQ2hevV3iVCYCem9/LrWLyeo7/SA4P4diyT/ALFYt4iKrL6G8IleYFcFQaaUZM2KihI9DKhHSrJ44WPqGK/4LnLlpNJf0CND/Snf+Ggf86j8x7q1cGlk4xclu5/tBsbWCjfrtz5xS79JbIewTv8AdKFjzC0p+Sle+unE+KUHcIltKlanpUEiYSlJSVGNkjtQSfCts4PaYZ9s3lpceYSSn4gUDYUdmmVVlOMcUptlQ1oWtKIO91QLnpNXRhcRcyLAcj8ulU7wasOYvDjklSl/yoUofEJ9asrNsYUYXEuIB1htekRNykBPjuRagSpj8stTSO2b4sBtKyASUpkXIMgC5AJCb71XXBB/0hIUo6kutgSTdIKQmCTcz93pT/hwfq7SinQvs0Sk2KTpEgjwIpFGB0ZqowQC8hxERfW4hV+YHeJ/y1tXYOOWltlqNiFi/OouV5eGV4nSmEuO9r56k39xCh6TUZnFwZURpGmentp9am4vMUjUJje1eT8i7aVeyvuP1KdcSoEiJEQVJGlStwATJnobCk7MnFuLW6oJJUZJbjSLAAaRdItaY504cW40pfREQpsqNhyWvf0A3oGpbTvfA7NYB7yCOczbyPKhjNotxxTigBrNe0f1Of71Hqgz623rKPuh6F7ID+J6GuuTv/btd4CHEqk7WII/dqgPO6pJ3+dcmsToUFCJSQfdenN2c9RouFeavlKT2zSZiJZUSZP91zyqqMU+kJ090qlRKjN50+yeXO0DmZOq04cbPQAdBi97eU9aAO4sQUgwDuOpE+7c0EbXJqh7GbgHWHXXUwC23B1JKvbVuIUIPc8bTTvi+IC22VOBspCk6bkExe4IMEHx9RVV5TnLmH1pbCftNOrUJkAGNiLd4miuN+uutoQ4wsJVoU2AhQ1yQhJE7yXUDzWnrXpJt2Coli5ZnBxDYcbCCgmI1KBEGCPYv6W8aSvpAc04uOzCXVLbOqSqAAACFG0EkcjsfI64DMsey0Wk4NcNlDc6VyhStJSCOqu0Tb++OtDs7cx2MUh9WGcIaCQClB0jUoLTO8zqT6EVkU0FVblmvZkvTKkCTuAsEe8x8qpjilJGMxMiD2zpjeJWoj4HrTNiMyzTv6sIsaANfcX3QRae9AkCl3F5din8QoFlxT7mpwoCbkaiCY6Agj0rYpoCky2eHsyLeFZbS06pKG0AH7KVAJEW7SZI5UvozRf8dW72DpP1dI7MaNY7iLmVhMf5tiPGg2W43M2mmmm8IopMpR9muVaJkb8gk+41EQ5mZxScWMMvtXJaA7M6V9mghSIJmQGlE3+4a8k9zzLB4hzxbuCxQOGeQOxcBK+ygSk3s4TA8AT4VB+i7FpawZLTDyytRUsp0QVJCUnSVKTaUmBSTm3G+LUh3DuIQiQptwaVak7hQubEXFRso42xGGZSw32elOq5BJOpRVyUBuflWpOqPFnZ5xinDvNocYd7yAR7BUNSyFGEKVIHZp2vY2rrh+J2O6sodCCdy05Bg84SdKZBEqAFj41UOb8QuYhaXVqGtISAREDStahbw1c52vNF8Hx88ElKoUfuXtPObi3yrHE9yd+Bn0YfFrkqWlCCmUNuE6iUCNIBMCFCSAJHlTtnPFQYaJDbixrQDKVIAhSSCCoRcpO8beIlAweZYxwuYhpgnWsJWtDaiNRIhJUDvKhYn7w6ipGMGYPg4deHcnUCR2S9QKQOW9gtJPmmskt7CSvkecPxay8kHv3ElJbXYkGxUAU7g3mDFLWPdJzBlfcSUltQVchTYVcCU2XAgDx3qHl+Y41CUtNMuGdCUS0oqWNKjEjeAhRsDZCjaKg4vG415Qc7FWrC6isoQruQTq7TfTGg2MbKrNIyKSHXOc8bDD/ZOX7Mj3x1+VScJxE06w2pS0a1IGsFQ9qINj4g0j4jMsxcQ8ksuFJQe0+yX3UhRBJ6QptQvzQehrXADMGUFsYZ2EguEFpchJm9vuyCfOaHQ6BpUSuOXkLdaKDP2e4PVxdv31pe7wWRcX5cv1qXnmMxOps4lpTZ0ko1oKdQJmRO9zvQ76ySoqJudz571mlooxtUSO2X+I/y1lcfrh615Q1L0O+Hs9NSeH/9Zw//ABmv+tNe1lP8kqLRwjQ0ExfU4Z8Ydv50pZRjFlxKSokBvA28xh1fNaj/AJjXtZWiY+Tn9KCAEYaBF8R/3EUZy94lOHUYkKYEgAEhL+VxJA7xE7mTXlZXjJcI3yBAlm33cP8A9vJKm4V8lKJ098NFUJSP9nhdoHdHgmBWVleMkBeIVS48TF0YLYAf/Mq2AsPSpDz5/igXafqjn3Ux/rbg9mI28PHesrK0Em5g6UayIkBzcAj+yxm4IIPrUHP/APbDwxP/AEZ5WVlaeZXvGX+vYz/8h/8A7q6tlaR2uwti42G31YWrKyvGvhEB+zClgAKTh3CkwJBRGkjyihmK72AxCjc/U8Gr1Ul1RIGwkibVlZXjy5NPo4V/o4TaDiJ2E2eyuIVuBe4Bg2mYFTHd8L/+z/8Amt1lZQvkMFZBilBjBXkJazAgKAUmeyP3TIIubERc1mZNArzKf/qybEjZnMTy5Ty25bVlZQoN8sY85dJWuY/2gsANlZsnkN43O53N644PMHF4zHIUQUtrShA0pGkEYgmCBOqTOr2vGsrKLwK8gH6VFSrDzGzgsAPvI6c/HeksVlZQjo8I1rKysojx/9k=" alt="Pathan Picture"  width="70px" height="100px" style="height: 100px; width:70px;border-radius:20%;">
+                                                                                 </a>
+                                                                              </td>
+                                                                              <td style="vertical-align:top;">
+                                                                                 <h3 style="color: #4d4d4d; font-size: 24px; font-weight: 400; line-height: 30px; margin-bottom: 3px; margin-top:0;">
+                                                                                    <strong>PATHAN</strong></h3>
+                                                                                 <p>10<sup>th</sup> August 2023 05:00PM.</p>
+                                                                                 <span style="color:#737373; font-size:14px;font-weight: bold;">Mumbai</span>
+                                                                                 <p style="color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; font-size: 18px; line-height: 125%; font-weight: 400; text-align: left;"><img class="model" src="http://apps.brand-scapes.com/movie/dist/img/booking-confirmed.png" style="display: block; width: 200px; height: 102px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; color: rgb(51, 51, 51); font-size: 20px; font-weight: 700; border-radius: 10px;" alt="Image" width="200" height="102">
+															         </p>
+                                                                              </td>
+                                                                           </tr>
+                                                                        </tbody>
+                                                                     </table>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <!-- <div class="definition-parent">
+															   <div class="text-element paragraph">
+															      <div style="color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; font-size: 18px; line-height: 125%; font-weight: 400; text-align: left;">
+															         
+															      </div>
+															   </div>
+															</div> -->
+                                                         </td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--[if (gte mso 9)]>
+                                 </td>
+                              </tr>
+                           </table>
+                           <![endif]-->
+                           <!--[if (gte mso 9)]>
+                           <table border="0" cellspacing="0" cellpadding="0" width="600" align="center" role="presentation">
+                              <tr>
+                                 <td class="temp-footer">
+                                    <![endif]-->
+                                    <div class="temp-footer" style="max-width: 600px; ">
+                                       <div class="temp-fullbleed contained" style="max-width: 600px; width: 100%;">
+                                          <div class="region">
+                                             <div>
+                                                <table class="row aw-stack" style="width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" role="presentation">
+                                                   <tbody>
+                                                      <tr>
+                                                         <td class="container" style="padding: 30px 20px; width: 100%; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse;
+                                                            border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;" width="100%" valign="top">
+                                                            <div class="definition-parent">
+                                                               <div class="social social--sm social--circle align-center">
+                                                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;">
+                                                                     <tbody>
+                                                                        <tr>
+                                                                           <td align="center" style="padding: 0.625rem 0px; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Helvetica, Arial, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;">
+                                                                              <!--[if mso]>&nbsp;<![endif]-->
+                                                                              <a href="#" style="display: inline-block; font-size: 0; vertical-align: top; margin: 0.25rem; height: 24px; width: 24px;" target="_blank" rel="noopener noreferrer">
+                                                                              <img style="height: 24px; width: 24px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; color: rgb(51, 51, 51); font-size: 20px; font-weight: 700; border-radius: 10px;" alt="Facebook Icon" src="https://awas.aweber-static.com/images/message-editor/social/black/circle/facebook.png" data-icon-name="Facebook" height="24" width="24">
+                                                                              </a>
+                                                                              
+                                                                              
+                                                                              <!--[if mso]>&nbsp;<![endif]-->
+                                                                              <a href="#" style="display: inline-block; font-size: 0; vertical-align: top; margin: 0.25rem; height: 24px; width: 24px;" target="_blank" rel="noopener noreferrer">
+                                                                              <img style="height: 24px; width: 24px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; color: rgb(51, 51, 51); font-size: 20px; font-weight: 700; border-radius: 10px;" alt="YouTube Icon" src="https://awas.aweber-static.com/images/message-editor/social/black/circle/youtube.png" data-icon-name="YouTube" height="24" width="24">
+                                                                              </a>
+                                                                              <!--[if mso]>&nbsp;<![endif]-->
+                                                                              <a href="#" style="display: inline-block; font-size: 0; vertical-align: top; margin: 0.25rem; height: 24px; width: 24px;" target="_blank" rel="noopener noreferrer">
+                                                                              <img style="height: 24px; width: 24px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; color: rgb(51, 51, 51); font-size: 20px; font-weight: 700; border-radius: 10px;" alt="LinkedIn Icon" src="https://awas.aweber-static.com/images/message-editor/social/black/circle/linkedin.png" data-icon-name="LinkedIn" height="24" width="24">
+                                                                              </a>
+                                                                              <!--[if mso]>&nbsp;<![endif]-->
+                                                                           </td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+                                                               </div>
+                                                            </div>
+                                                            <div class="definition-parent">
+                                                               <div class="text-element paragraph">
+                                                                  <div style="color: rgb(124, 124, 124); font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 125%; font-weight: 400; text-align: left;">
+                                                                     <div style="text-align: center; color: rgb(124, 124, 124); font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 125%; font-weight: 400;">&nbsp;</div>
+                                                                     <div style="text-align: center; color: rgb(124, 124, 124); font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 125%; font-weight: 400;">A-18, Cross Rd B, M.I.D.C,<br> Mulgaon, Andheri East, Mumbai,<br> Maharashtra 400093
+                                                                     </div>
+                                                                     
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--[if (gte mso 9)]>
+                                 </td>
+                              </tr>
+                           </table>
+                           <![endif]-->
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </center>
+   </body>
 </html>
