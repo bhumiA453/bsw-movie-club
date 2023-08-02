@@ -42,6 +42,7 @@ class MovieController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'image' => 'required|image',
+            'thumbnail' => 'required|image|dimensions:max_width=200,max_height=200',
             'date' => 'required|date',
             'time' => 'required',
             'description' => 'required',
@@ -53,6 +54,9 @@ class MovieController extends Controller
         ]);
         try {
             $imagePath = $request->file('image')->store('images', 'public');
+
+            $timagePath = $request->file('thumbnail')->store('thumbnail', 'public');
+            // echo '<pre>';print_r(($request->file('thumbnail'))->getClientOriginalName());exit();
             
             foreach($validatedData['city'] as $city)
             {
@@ -74,6 +78,7 @@ class MovieController extends Controller
             $movie = new Movie();
             $movie->m_name = $validatedData['name'];
             $movie->m_image = $imagePath;
+            $movie->thumbnail = $timagePath;
             $movie->date = $validatedData['date'];
             $movie->time = $validatedData['time'];
             $movie->venue = $validatedData['description'];
@@ -99,6 +104,7 @@ class MovieController extends Controller
         // You can pass the $formItem object to the view and display the edit form
     }
 
+
     public function update_movie(Request $request, $id)
     {
         
@@ -107,6 +113,7 @@ class MovieController extends Controller
             'date' => 'required|date',
             'time' => 'required',
             'description' => 'required',
+            'thumbnail' => 'image|dimensions:max_width=200,max_height=200',
             'url' => 'required',
             'genres' => 'required',
             'cast' => 'required',
@@ -124,6 +131,11 @@ class MovieController extends Controller
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('images', 'public');
                 $movie->m_image = $imagePath;
+            }
+
+            if ($request->hasFile('thumbnail')) {
+                $timagePath = $request->file('thumbnail')->store('thumbnail', 'public');
+                $movie->thumbnail = $timagePath;
             }
 
             $pattern = '/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?.*v=|embed\/|v\/)|youtu\.be\/)([^&?\/ ]{11})/';

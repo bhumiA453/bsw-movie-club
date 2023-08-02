@@ -518,7 +518,7 @@ p.text span{
 
 .loader__text {
   margin: 5px auto;
-  color: #ffffff;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: Anton, sans-serif;

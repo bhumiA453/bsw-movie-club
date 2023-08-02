@@ -116,6 +116,7 @@ class FrontendController extends Controller
                     $details = [
                         'title' => 'Your booking is confirmed!',
                         'm_name' => $movie_data[0]->m_name,
+                        'thumbnail' => $movie_data[0]->thumbnail,
                         'u_name' => $name,
                         'email' => $email,
                         'date' => $movie_data[0]->date,

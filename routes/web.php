@@ -23,11 +23,24 @@ use App\Http\Controllers\CityController;
     return view('welcome');
 });*/
 
+// This route will handle 404 errors and redirect to the custom 404 page.
+Route::fallback(function () {
+    // Check if the 'id' parameter is present in the request
+    if (request()->has('id')) {
+        // Your existing code logic goes here
+        // Example:
+        Route::get('/', [FrontendController::class, 'get_movie'])->name('home');
+    } else {
+        // If 'id' parameter is not present, redirect to the custom 404 page
+        return view('404');
+    }
+});
+
 Route::get('/admin/login', function () {
     return view('login');
 });
 
-Route::get('/', [FrontendController::class, 'get_movie'])->name('home');
+
 // Route::get('/{id?}', [FrontendController::class, 'get_movie'])->name('home');
 Route::post('/check-seats', [FrontendController::class, 'check_seats'])->name('check-seats');
 Route::any('/booking', [FrontendController::class, 'get_seats'])->name('booking');

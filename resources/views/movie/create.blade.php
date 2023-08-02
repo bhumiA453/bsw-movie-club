@@ -43,6 +43,11 @@
                 <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
             </div>
             <div class="form-group">
+                <label for="image">Thumbnail:</label>
+                <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*">
+                <p>Note: Thumbnail should be 150px x 190px</p>
+            </div>
+            <div class="form-group">
                 <label for="date">Date:</label>
                 <input type="date" class="form-control" id="date" name="date" required>
             </div>

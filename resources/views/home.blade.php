@@ -35,8 +35,8 @@
         <div class="row justify-content-md-center">
           @if ($items->count() > 0)
           @foreach($items as $item)
-            <div class="col-md-4 movie-tile text-center" data-trailer-youtube-id="{{$item->trailer_id}}" title="Click for Trailer" data-toggle="modal" data-target="#trailer">
-              <div class="movie-poster">
+            <div class="col-md-4 movie-tile text-center" >
+              <div class="movie-poster" data-trailer-youtube-id="{{$item->trailer_id}}" title="Click for Trailer" data-toggle="modal" data-target="#trailer">
                     <img src="{{asset('storage/' . $item->m_image)}}" alt="movie poster image">
                     <!-- This is used to overlay the content over the poster images on hover -->
                     <div class="movie-info">

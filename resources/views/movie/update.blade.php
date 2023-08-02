@@ -39,8 +39,16 @@
             <div class="form-group">
                 <label for="image">Image:</label>
                 <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+                <p>Note: Thumbnail should be 200px x 200px or smaller</p>
                 @if ($item->m_image)
                     <img src="{{asset('storage/' . $item->m_image)}}" alt="Movie Image" class="mt-2" style="max-width: 200px;">
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="image">Thumbnail:</label>
+                <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*">
+                @if ($item->thumbnail)
+                    <img src="{{asset('storage/' . $item->thumbnail)}}" alt="Movie Thumbnail" class="mt-2" style="max-width: 200px;">
                 @endif
             </div>
             <div class="form-group">
