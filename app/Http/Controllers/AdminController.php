@@ -13,7 +13,7 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect()->intended('/get_movie');
+            return redirect()->intended('/admin/get_movie');
         }else{
             return back()->withErrors([
                 'email' => 'Invalid email or password.',

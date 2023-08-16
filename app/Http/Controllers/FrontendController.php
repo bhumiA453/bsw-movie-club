@@ -14,13 +14,14 @@ class FrontendController extends Controller
 {
     public function get_movie()
     {
-        $id=$_GET['id'];
+        $id=isset($_GET['id']) && $_GET['id'] != ''?$_GET['id']:'';
         // echo '<pre>';print_r($id);exit();
-        // dd('hi');
-        if(!isset($id) || $id == "" || $id == null)
+        
+        if(!isset($id) || $id == '' || $id == null)
         {
-            $city = base64_encode('Mumbai');
-            $city = base64_decode($city);
+            // $city = base64_encode('Mumbai');
+            // $city = base64_decode($city);
+            return view('404');
         }else{
             $city = base64_decode($id);
         }

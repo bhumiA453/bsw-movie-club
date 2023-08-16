@@ -24,7 +24,7 @@ use App\Http\Controllers\CityController;
 });*/
 
 // This route will handle 404 errors and redirect to the custom 404 page.
-Route::fallback(function () {
+/*Route::fallback(function () {
     // Check if the 'id' parameter is present in the request
     if (request()->has('id')) {
         // Your existing code logic goes here
@@ -34,14 +34,14 @@ Route::fallback(function () {
         // If 'id' parameter is not present, redirect to the custom 404 page
         return view('404');
     }
-});
+});*/
 
 Route::get('/admin/login', function () {
     return view('login');
 });
 
 
-// Route::get('/{id?}', [FrontendController::class, 'get_movie'])->name('home');
+Route::get('/{id?}', [FrontendController::class, 'get_movie'])->name('home');
 Route::post('/check-seats', [FrontendController::class, 'check_seats'])->name('check-seats');
 Route::any('/booking', [FrontendController::class, 'get_seats'])->name('booking');
 Route::post('/save-seat-data', [FrontendController::class, 'save_booking'])->name('save-seat-data');
@@ -80,20 +80,20 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/save_city', [CityController::class, 'save_city'])->name('save-city');
 
     /*Movie menu*/
-    Route::get('/get_movie', [MovieController::class, 'get_all_movie'])->name('get-movie');
-    Route::get('/create', [MovieController::class, 'add_movie'])->name('create');
-    Route::post('/save_movie', [MovieController::class, 'save_movie'])->name('save-movie');
-    Route::get('/edit/{id}', [MovieController::class, 'edit_movie'])->name('edit-movie');
-    Route::post('/delete_movie/{id}', [MovieController::class, 'delete_movie'])->name('delete-movie');
-    Route::post('/update/{id}', [MovieController::class, 'update_movie'])->name('update');
+    Route::get('/admin/get_movie', [MovieController::class, 'get_all_movie'])->name('get-movie');
+    Route::get('/admin/create', [MovieController::class, 'add_movie'])->name('create');
+    Route::post('/admin/save_movie', [MovieController::class, 'save_movie'])->name('save-movie');
+    Route::get('/admin/edit/{id}', [MovieController::class, 'edit_movie'])->name('edit-movie');
+    Route::post('/admin/delete_movie/{id}', [MovieController::class, 'delete_movie'])->name('delete-movie');
+    Route::post('/admin/update/{id}', [MovieController::class, 'update_movie'])->name('update');
 
     /*Seating menu*/
-    Route::get('/seating', [SeatingController::class, 'get_all_seating'])->name('seating');
-    Route::get('/create-seats', [SeatingController::class, 'add_seats'])->name('create-seats');
-    Route::post('/save_seats', [SeatingController::class, 'save_seats'])->name('save-seat-data');
+    Route::get('/admin/seating', [SeatingController::class, 'get_all_seating'])->name('seating');
+    Route::get('/admin/create-seats', [SeatingController::class, 'add_seats'])->name('create-seats');
+    Route::post('/admin/save_seats', [SeatingController::class, 'save_seats'])->name('save-seat-data');
 
     /*Booking Menu*/
-    Route::get('/get-booking-data', [BookingController::class, 'get_all_booking'])->name('get-booking-data');
+    Route::get('/admin/get-booking-data', [BookingController::class, 'get_all_booking'])->name('get-booking-data');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
